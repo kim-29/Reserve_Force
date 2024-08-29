@@ -6,48 +6,92 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"/>
   <style>
-    *{
+    :root{
+      --font1:1rem;
+      --font1_5:1.5rem;
+      --font2:2rem;
+      --font3:3rem;
+      --font4:4rem;
+      --font5:5rem;
+      --dark:#333;
+      --white:#fff;
+      --orange:orange;
+    }
+    * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-    body{
-      background-color: #333;
-      color: #fff;
+
+    body {
+      background-color: var(--dark);
+      color: var(--white);
       margin: 0 1rem;
+      font-size: var(--font1);
     }
-    .title{
-      font-size: 3rem;
+
+    .title {
+      font-size: var(--font3);
       text-align: center;
     }
-    div{
+
+    div {
       margin-top: 1.2rem;
     }
-    .act, .decree, .rule, .rule2{
-      color: orange;
+
+    .act,
+    .decree,
+    .rule,
+    .rule2,.jo {
+      color: var(--orange);
       margin-top: 2rem;
+      font-weight: bolder;
     }
 
-    .jo{
-      color: orange;
-      margin-top: 2rem;
-    }
-
-    .jang{
-      font-size: 2rem;
+    .jang {
+      font-size: var(--font2);
       margin-top: 8rem;
       font-weight: bold;
     }
-    .jul{
+
+    .jul {
       font-size: 1.5rem;
       margin-top: 5rem;
       font-weight: bold;
+    }
+    .util{
+      font-size: var(--font1_5);
+      display: flex;
+      column-gap: 2rem;
+      justify-content: flex-end;
+      margin-right: 2rem;  
+    }
+    .mode-btn, .font-btn{
+      cursor: pointer;
+    }
+    .dark-mode{
+      --dark:white;
+      --white:black;
+      --orange:darkblue;
+    }
+    .large-font{
+      --font1:4rem;
+      --font1_5:4.5rem;
+      --font2:5rem;
+      --font3:6rem;
+      --font4:6rem;
+      --font5:6rem;
     }
   </style>
 </head>
 
 <body>
+  <div class="util">
+    <i class="ri-moon-line mode-btn"></i>
+    <i class="ri-font-size-2 font-btn"></i>
+  </div>
   <div id="content">
     <h1 class="title">『예비군 교육훈련 훈령』</h1>
     <div class="jang">제1장 총 칙</div>
@@ -601,7 +645,30 @@
     <div class="hang"> 3항.그 밖의 과태료의 부과·징수, 재판 및 집행 등의 절차 및 방법에 관한 사항은 「질서위반행위규제법」에서 정하는 바를 따른다.</div>
     <div class="jo">제33조 (재검토 기간) 국방부 장관은 이 훈령에 대하여 2023년 1월 1일을 기준으로 매 3년이 되는 시점(매 3년째의 12월 31일까지를 말한다)마다 그 타당성을 검토하여 개선 등의 조치를 하여야 한다. </div>
   </div>
-
+<script>
+  /*book*/
+const modebtn = document.querySelector('.mode-btn');
+const fontbtn = document.querySelector('.font-btn');
+const body = document.querySelector('body');
+modebtn.addEventListener('click',()=>{
+  console.log('mode-btn');
+  body.classList.toggle('dark-mode');
+  if(body.classList.contains('dark-mode')){
+    modebtn.style.color='orange';
+  }else{
+    modebtn.style.color='white';
+  }
+})
+fontbtn.addEventListener('click',()=>{
+  console.log('font');
+  body.classList.toggle('large-font');
+  if(body.classList.contains('large-font')){
+    fontbtn.style.color='orange';
+  }else{
+    fontbtn.style.color='white';
+  }
+});
+</script>
 
 </body>
 

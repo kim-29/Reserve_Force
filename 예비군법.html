@@ -6,7 +6,19 @@
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <title>Document</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"/>
   <style>
+    :root{
+      --font1:1rem;
+      --font1_5:1.5rem;
+      --font2:2rem;
+      --font3:3rem;
+      --font4:4rem;
+      --font5:5rem;
+      --dark:#333;
+      --white:#fff;
+      --orange:orange;
+    }
     * {
       margin: 0;
       padding: 0;
@@ -14,13 +26,14 @@
     }
 
     body {
-      background-color: #333;
-      color: #fff;
+      background-color: var(--dark);
+      color: var(--white);
       margin: 0 1rem;
+      font-size: var(--font1);
     }
 
     .title {
-      font-size: 3rem;
+      font-size: var(--font3);
       text-align: center;
     }
 
@@ -31,18 +44,14 @@
     .act,
     .decree,
     .rule,
-    .rule2 {
-      color: orange;
+    .rule2,.jo {
+      color: var(--orange);
       margin-top: 2rem;
-    }
-
-    .jo {
-      color: orange;
-      margin-top: 2rem;
+      font-weight: bolder;
     }
 
     .jang {
-      font-size: 2rem;
+      font-size: var(--font2);
       margin-top: 8rem;
       font-weight: bold;
     }
@@ -52,11 +61,37 @@
       margin-top: 5rem;
       font-weight: bold;
     }
-
+    .util{
+      font-size: var(--font1_5);
+      display: flex;
+      column-gap: 2rem;
+      justify-content: flex-end;
+      margin-right: 2rem;  
+    }
+    .mode-btn, .font-btn{
+      cursor: pointer;
+    }
+    .dark-mode{
+      --dark:white;
+      --white:black;
+      --orange:darkblue;
+    }
+    .large-font{
+      --font1:4rem;
+      --font1_5:4.5rem;
+      --font2:5rem;
+      --font3:6rem;
+      --font4:6rem;
+      --font5:6rem;
+    }
   </style>
 </head>
 
 <body>
+  <div class="util">
+    <i class="ri-moon-line mode-btn"></i>
+    <i class="ri-font-size-2 font-btn"></i>
+  </div>
   <div id="content">
     <h1 class="title">예비군법 </h1>
     <div class="act">법) 제1조(목적) </div>
@@ -833,7 +868,30 @@
     <div class="hang">1항. 수임군부대의 장은 관할 지역예비군에 대한 지원사업의 추진실적을 별지 제6호서식에 따라 지휘계통을 통하여 매년 1월 31일까지 국방부장관에게 보고하고, 관할 지방자치단체의 장에게 통보하여야 한다.</div>
     <div class="hang"> 2항. 수임군부대의 장은 지방자치단체의 지원사업이 완료된 경우에는 그 결과를 지체 없이 관할 지방자치단체에 통보하고 그 후 최초로 개최되는 방위협의회에 보고하여야 한다.</div>
   </div>
-
+<script>
+  /*book*/
+const modebtn = document.querySelector('.mode-btn');
+const fontbtn = document.querySelector('.font-btn');
+const body = document.querySelector('body');
+modebtn.addEventListener('click',()=>{
+  console.log('mode-btn');
+  body.classList.toggle('dark-mode');
+  if(body.classList.contains('dark-mode')){
+    modebtn.style.color='orange';
+  }else{
+    modebtn.style.color='white';
+  }
+})
+fontbtn.addEventListener('click',()=>{
+  console.log('font');
+  body.classList.toggle('large-font');
+  if(body.classList.contains('large-font')){
+    fontbtn.style.color='orange';
+  }else{
+    fontbtn.style.color='white';
+  }
+});
+</script>
 
 </body>
 
