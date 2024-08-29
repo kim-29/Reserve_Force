@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>예비군 중대장 임용시험 공부</title>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <!--header-->
+  <div class="header">
+    <nav class="nav container">
+      <h3 class="nav-logo">Book List</h3>
+    </nav>
+  </div>
+  <!--main-->
+  <div class="main">
+    <!--book section-->
+    <div class="section book">
+      <div class="book-container container">
+        <div class="book-cards grid">
+          <a href="./병역법.html" target="_blank"  class="book-card">
+            <img src="https://cdn.pixabay.com/photo/2018/10/03/17/54/silhouette-3722022_640.png" alt="image" class="card-img">
+            <div class="card-content">
+              <h1 class="card-title">병역의무</h1>
+              <p class="card-description">
+                병역법, 동법 시행령, 동법 시행규칙
+              </p>  
+            </div>
+          </a>
+          <a href="./예비군법.html" target="_blank"  class="book-card">
+            <img src="https://cdn.pixabay.com/photo/2019/03/14/09/54/pubg-4054488_640.png" alt="image" class="card-img">
+            <div class="card-content">
+              <h1 class="card-title">예비군법</h1>
+              <p class="card-description">
+                예비군법, 동법 시행령
+              </p>  
+            </div>
+          </a>
+          
+          <a href="./통합방위법.html"  target="_blank"  class="book-card">
+            <img src="https://cdn.pixabay.com/photo/2016/03/31/21/30/bayonet-1296459_640.png" alt="image" class="card-img">
+            <div class="card-content">
+              <h1 class="card-title">통합방위</h1>
+              <p class="card-description">
+                통합방위법, 동법 시행령, 동법 시행규칙
+              </p>
+            </div>
+          </a>
+          <a href="./조직편성훈령.html" target="_blank"  class="book-card">
+            <img src="https://cdn.pixabay.com/photo/2014/04/03/10/11/soldier-310078_1280.png" alt="image" class="card-img">
+            <div class="card-content">
+              <h1 class="card-title">예비군 편성</h1>
+              <p class="card-description">
+                예비군 조직/편성과 운영에 관한 훈령
+              </p>
+            </div>
+          </a>
+          <a href="./교육훈련훈령.html" target="_blank" class="book-card">
+            <img src="https://cdn.pixabay.com/photo/2018/01/20/12/21/silhouette-3094428_640.png" alt="image" class="card-img">
+            <div class="card-content">
+              <h1 class="card-title">예비군 교육/훈련</h1>
+              <p class="card-description">
+                예비군 교육훈련 훈령
+              </p>
+            </div>
+          </a>
+          <a href="#" target="_blank" class="book-card">
+            <img src="https://cdn.pixabay.com/photo/2022/07/29/20/23/knight-7352597_640.png" alt="image" class="card-img" alt="image" class="card-img">
+            <div class="card-content">
+              <h1 class="card-title">시험 문제집</h1>
+              <p class="card-description">
+                공사중...
+              </p>  
+            </div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <!--timer section-->
+    <div class="section timer">
+      <div class="timer-container">
+        <div class="calendar">
+          <div class="calendar-title section-title">
+            Countdown to examination
+          </div>
+          <div class="year">2024</div>
+          <div class="rest">
+            <div class="days time">00</div>
+            <div class="hours time">00</div>
+            <div class="minutes time">00</div>
+            <div class="seconds time">00</div>
+          </div>
+          <div class="footer">
+          <p>Goood Lock!</p>
+        </div>
+        </div>
+      </div>
+        
+    </div>
+  </div>
+  
+  <script>
+    const days = document.querySelector('.days');
+    const hours = document.querySelector('.hours');
+    const minutes = document.querySelector('.minutes');
+    const seconds = document.querySelector('.seconds');
+
+    const Dday = new Date(2024, 9, 19, 10, 0, 0);
+    setInterval(() => {
+      const now = new Date();
+
+      const gap = Dday - now;
+
+      const sec = 1000;
+      const min = sec * 60;
+      const hour = min * 60;
+      const day = hour * 24;
+
+      const d = Math.floor(gap / day);
+      const h = Math.floor((gap % day) / hour);
+      const m = Math.floor((gap % hour) / min);
+      const s = Math.floor((gap % min) / sec);
+
+      days.innerHTML = d;
+      hours.innerHTML = h;
+      minutes.innerHTML = m;
+
+      seconds.innerHTML = s;
+    }, 1000);
+  </script>
+</body>
+</html>
