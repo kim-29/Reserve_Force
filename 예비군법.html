@@ -26,7 +26,7 @@
     }
     /*2024. 9.20 add update start*/
     html{
-      scroll-padding-top: 7rem;
+      scroll-padding-top: 10rem;
     }
     /*2024. 9.20 add update end*/
     
@@ -40,7 +40,7 @@
     .title {
       font-size: var(--font3);
       text-align: center;
-      margin-top: 6rem; /*2024. 9.20 add update point*/
+      margin-top: 10rem; /*2024. 9.20 add update point*/
     }
 
     div {
@@ -70,18 +70,17 @@
     }
     /*20224 09.20 수정 add start*/
     .util {
-      font-size: var(--font1_5);
-      text-align: right;
-      display: flex;
-      column-gap: 2rem;
-      align-items: center;
       position: fixed;
       top: 0;
       left: 0;
-      margin: 0;
       width: 100%;
-      padding:1rem;
-      background-color: var(--dark);
+      display: flex;
+      column-gap: 2rem;
+      font-size: 3rem;
+      align-items: center;
+      background-color: inherit;
+      margin: 0;
+      padding: 0 2rem;
     }
 
     .mode-btn,
@@ -103,28 +102,31 @@
       outline: none;
       border: none;
       position: absolute;
-      top: 1rem;  
+      top: 1.5rem; 
     }
 
 
     .search-up{
-      right: 4rem;
+      right: 1rem;
       cursor: pointer;
+      font-size: 5rem;
     }
     .search-down{
-      right: 8rem;
+      right: 6rem;
       cursor: pointer;
+      font-size: 5rem;
     }
     .search-result{
       right: 12rem;
-      top: 0.6rem;
+      top: 2rem;
+      font-size: 3rem;
     }
 
     .search-input{
-      padding: 1rem 2rem;
+      height: 8rem;      
       width: 100%;
       border-radius: 1rem;
-      font-size: 1.5rem;
+      font-size: 4rem;
     }
     .highlight {
       background-color: orange;
@@ -152,7 +154,7 @@
 
     /* 2024.9.20 update */
     .nav-menu {
-      padding: 7rem 0;
+      padding: 10rem 0 5rem 0;
       position: fixed;
       width: 100%;
       height: 100%;
@@ -348,6 +350,7 @@
     <i class="ri-moon-line mode-btn"></i>
     <i class="ri-font-size-2 font-btn"></i>
   </div>
+  
   <!-- 2024.9.20 update add end -->
   <div id="content">
     <h1 class="title">예비군법 </h1>
