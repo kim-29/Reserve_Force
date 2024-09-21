@@ -106,7 +106,7 @@
       cursor: pointer;
       color: black;
       position: absolute;
-      top: 2rem;
+      top: 0.8rem;
     }
 
     .search-up {
@@ -120,7 +120,7 @@
     .search-result {
       right: 20rem;
       font-size: 3rem;
-      top: 3.5rem;
+      top: 2.5rem;
     }
 
     .search-input {
@@ -131,7 +131,7 @@
     }
 
     .show-search {
-      top: 10rem;
+      top: 50%;
     }
 
 
@@ -731,7 +731,6 @@
     const fontbtn = document.querySelector('.font-btn');
     const body = document.querySelector('body');
     modebtn.addEventListener('click', () => {
-      console.log('mode-btn');
       body.classList.toggle('dark-mode');
       if (body.classList.contains('dark-mode')) {
         modebtn.style.color = 'orange';
@@ -740,7 +739,6 @@
       }
     })
     fontbtn.addEventListener('click', () => {
-      console.log('font');
       body.classList.toggle('large-font');
       if (body.classList.contains('large-font')) {
         fontbtn.style.color = 'orange';
@@ -869,24 +867,27 @@
       currentHighlightIndex = -1;
     }
 
-    searchInput.addEventListener('input', () => {
-      removeHighlights(); // 기존 하이라이트 제거
-      let contentHtml = contentElement.innerHTML;
-      const searchValue = searchInput.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // 특수 문자 이스케이프
+    searchInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        removeHighlights(); // 기존 하이라이트 제거
+        let contentHtml = contentElement.innerHTML;
+        const searchValue = searchInput.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // 특수 문자 이스케이프
 
 
-      if (searchValue === '') {
-        contentElement.innerHTML = contentHtml; // 검색어가 빈 문자열일 경우 하이라이트 제거
-        searchResult.innerHTML = '';
-        return;
+        if (searchValue === '') {
+          contentElement.innerHTML = contentHtml; // 검색어가 빈 문자열일 경우 하이라이트 제거
+          searchResult.innerHTML = '';
+          return;
+        }
+
+        const regex = new RegExp(`(${searchValue})`, 'gi');
+
+        contentHtml = contentHtml.replace(regex, `<span class='highlight'>$1</span>`);
+        contentElement.innerHTML = contentHtml;
+        highlights = contentElement.querySelectorAll('.highlight');
+        searchResult.innerHTML = `${highlights.length}건`;
       }
-
-      const regex = new RegExp(`(${searchValue})`, 'gi');
-
-      contentHtml = contentHtml.replace(regex, `<span class='highlight'>$1</span>`);
-      contentElement.innerHTML = contentHtml;
-      highlights = contentElement.querySelectorAll('.highlight');
-      searchResult.innerHTML = `${highlights.length}건`;
     });
 
     searchDown.addEventListener('click', () => {
