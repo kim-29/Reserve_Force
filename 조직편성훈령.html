@@ -1,30 +1,34 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <title>Document</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
   <style>
-    :root{
-      --font1:1rem;
-      --font1_5:1.5rem;
-      --font2:2rem;
-      --font3:3rem;
-      --font4:4rem;
-      --font5:5rem;
-      --dark:#333;
-      --white:#fff;
-      --orange:orange;
+    :root {
+      --font1: 1rem;
+      --font1_5: 1.5rem;
+      --font2: 2rem;
+      --font3: 3rem;
+      --font4: 4rem;
+      --font5: 5rem;
+      --dark: #333;
+      --white: #fff;
+      --orange: orange;
     }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
+    /*2024. 9.20 add update start*/
+    html{
+      scroll-padding-top: 10rem;
+    }
+    /*2024. 9.20 add update end*/
     body {
       background-color: var(--dark);
       color: var(--white);
@@ -35,6 +39,7 @@
     .title {
       font-size: var(--font3);
       text-align: center;
+      padding-top: 20rem;/*2024. 9.21 add update point*/
     }
 
     div {
@@ -44,7 +49,8 @@
     .act,
     .decree,
     .rule,
-    .rule2,.jo {
+    .rule2,
+    .jo {
       color: var(--orange);
       margin-top: 2rem;
       font-weight: bolder;
@@ -61,41 +67,218 @@
       margin-top: 5rem;
       font-weight: bold;
     }
-    .util{
-      font-size: var(--font1_5);
-      text-align: right;  
+    /*20224 09.21 수정 start*/
+    .util {
+      margin-top: 0;
+      text-align: right;
+      font-size: 3rem;
+      position: fixed;
+      border-radius: 5rem;
+      top: 0;
+      right: 0;
+      background-color: var(--dark);
     }
-    .mode-btn, .font-btn{
+    
+    .search-btn,
+    .mode-btn,
+    .font-btn {
       cursor: pointer;
-      margin-right: 2rem;
+      padding: 3rem;
+      display: inline-block;
     }
-    .dark-mode{
-      --dark:white;
-      --white:black;
-      --orange:darkblue;
+    .search{
+      font-size: 4rem;
+      position: fixed;
+      top: -10rem;
+      left: 0;
+      width: 100%;
+      transition: top .3s ease;
     }
-    .large-font{
-      --font1:4rem;
-      --font1_5:4.5rem;
-      --font2:5rem;
-      --font3:6rem;
-      --font4:6rem;
-      --font5:6rem;
+
+    .search-result, .search-up, .search-down{
+      cursor: pointer;
+      color: black;
+      position: absolute;
+      top: 1rem;
     }
+
+    .search-up{
+      right: 3rem;
+    }
+    .search-down{
+      right:9rem;
+    }
+    .search-result{
+      right:15rem;
+    }
+    
+    .search-input{
+      border-radius: 1rem;
+      width: 100%;
+      padding: 2rem;
+      font-size: 3rem;
+    }
+    .show-search{
+      top: 10rem;
+    }
+    
+    
+    .highlight {
+      background-color: green;
+      
+    }
+    .highlight.active{
+      background-color: red;
+      
+    }
+    /*20224 09.21 수정 end*/
+
+    .dark-mode {
+      --dark: white;
+      --white: black;
+      --orange: darkblue;
+    }
+
+    .large-font {
+      --font1: 4rem;
+      --font1_5: 4.5rem;
+      --font2: 5rem;
+      --font3: 6rem;
+      --font4: 6rem;
+      --font5: 6rem;
+    }
+
+    /* 2024.9.20 update */
+    .nav-menu {
+      padding: 10rem 0 5rem 0;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: -100%;
+      text-align: center;
+      margin: 0;
+      overflow: auto;
+      background-color: inherit;
+      transition: right .3s ease;
+    }
+
+    .nav-menu::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-list {
+      margin: 0 4rem;
+      text-align: left;
+    }
+    .nav-list li{
+      margin-top: 2rem;
+    }
+    .nav-link {
+      color: white;
+      text-decoration: none;
+    }
+
+    .show-menu {
+      right: 0;
+    }
+
+    /* 2024.9.20 update */
+
   </style>
 </head>
 
 <body>
+  <!-- 2024.9.20 update -->
+  <div class="nav-menu">
+    <ul class="nav-list">
+      <li><a href="#list1" class="nav-link">제1조(목적)</a></li>
+      <li><a href="#list2" class="nav-link">제2조(정의)</a></li>
+      <li><a href="#list3" class="nav-link">제3조(적용범위)</a></li>
+      <li><a href="#list4" class="nav-link">제4조(예비군 지휘관리체계)</a></li>
+      <li><a href="#list5" class="nav-link">제5조(예비군 조직․편성과 운영에 관한 업무분장)</a></li>
+      <li><a href="#list6" class="nav-link">제6조(예비군 조직)</a></li>
+      <li><a href="#list7" class="nav-link">제7조(예비군부대 편성체계)</a></li>
+      <li><a href="#list8" class="nav-link">제8조(편성원칙)</a></li>
+      <li><a href="#list9" class="nav-link">제9조(편성방법)</a></li>
+      <li><a href="#list10" class="nav-link">제10조(편성 및 해체절차)</a></li>
+      <li><a href="#list11" class="nav-link">제11조(예비군 주요 직위자 임명 및 면직)</a></li>
+      <li><a href="#list12" class="nav-link">제12조(지역예비군부대계획)</a></li>
+      <li><a href="#list13" class="nav-link">제13조(편성원칙)</a></li>
+      <li><a href="#list14" class="nav-link">제14조 (편성방법)</a></li>
+      <li><a href="#list15" class="nav-link">제15조(편성 및 체절차)</a></li>
+      <li><a href="#list16" class="nav-link">제16조(지원 대상)</a></li>
+      <li><a href="#list17" class="nav-link">제17조(지원방법 및 처리절차)</a></li>
+      <li><a href="#list18" class="nav-link">제18조(여성예비군 편성)</a></li>
+      <li><a href="#list19" class="nav-link">제19조(특전예비군 편성)</a></li>
+      <li><a href="#list20" class="nav-link">제20조(추가 편성 대상)</a></li>
+      <li><a href="#list21" class="nav-link">제21조(추가 편성 절차)</a></li>
+      <li><a href="#list22" class="nav-link">제22조(예비군 신규조직 절차)</a></li>
+      <li><a href="#list23" class="nav-link">제23조(예비군 신상변동자 관리절차)</a></li>
+      <li><a href="#list24" class="nav-link">제24조(전입 및 전출자 발생 시 조치절차)</a></li>
+      <li><a href="#list25" class="nav-link">제25조(재복무자의 예비군 복무연차 적용)</a></li>
+      <li><a href="#list26" class="nav-link">제26조(예비역 간부 진급)</a></li>
+      <li><a href="#list27" class="nav-link">제27조(예비군 보류자 관리)</a></li>
+      <li><a href="#list28" class="nav-link">제28조(무장)</a></li>
+      <li><a href="#list29" class="nav-link">제29조(지휘통신)</a></li>
+      <li><a href="#list30" class="nav-link">제30조(동원체계)</a></li>
+      <li><a href="#list31" class="nav-link">제31조(운용방법)</a></li>
+      <li><a href="#list32" class="nav-link">제32조 삭제</a></li>
+      <li><a href="#list33" class="nav-link">제34조 삭제</a></li>
+      <li><a href="#list34" class="nav-link">제35조 삭제</a></li>
+      <li><a href="#list35" class="nav-link">제36조 삭제</a></li>
+      <li><a href="#list36" class="nav-link">제37조 삭제</a></li>
+      <li><a href="#list37" class="nav-link">제38조 삭제</a></li>
+      <li><a href="#list38" class="nav-link">제39조 삭제</a></li>
+      <li><a href="#list39" class="nav-link">제40조 삭제</a></li>
+      <li><a href="#list40" class="nav-link">제41조 삭제</a></li>
+      <li><a href="#list41" class="nav-link">제42조 삭제</a></li>
+      <li><a href="#list42" class="nav-link">제43조(예비군 감사)</a></li>
+      <li><a href="#list43" class="nav-link">제44조(예비군법 위반자 처리)</a></li>
+      <li><a href="#list44" class="nav-link">제45조(보급지원계통)</a></li>
+      <li><a href="#list45" class="nav-link">제46조(무기 및 탄약)</a></li>
+      <li><a href="#list46" class="nav-link">제47조(통신장비)</a></li>
+      <li><a href="#list47" class="nav-link">제48조(기동장비)</a></li>
+      <li><a href="#list48" class="nav-link">제49조(개인피복 및 개인장구류)</a></li>
+      <li><a href="#list49" class="nav-link">제50조(시설)</a></li>
+      <li><a href="#list50" class="nav-link">제51조(관리전환)</a></li>
+      <li><a href="#list51" class="nav-link">제52조(감시장비 등)</a></li>
+      <li><a href="#list52" class="nav-link">제53조 삭제</a></li>
+      <li><a href="#list53" class="nav-link">제54조 삭제</a></li>
+      <li><a href="#list54" class="nav-link">제55조 삭제</a></li>
+      <li><a href="#list55" class="nav-link">제56조 삭제</a></li>
+      <li><a href="#list56" class="nav-link">제57조 삭제</a></li>
+      <li><a href="#list57" class="nav-link">제58조 삭제</a></li>
+      <li><a href="#list58" class="nav-link">제59조 삭제</a></li>
+      <li><a href="#list59" class="nav-link">제60조 삭제</a></li>
+      <li><a href="#list60" class="nav-link">제61조 (재검토 기한)</a></li>
+    </ul>
+  </div>
+  <!-- 2024.9.20 update -->
+  <!-- 2024.9.21 update start-->
+  <div class="search">
+    <form action="">
+      <label for="search-input"></label>
+      <input class="search-input" type="text" id="search-input" placeholder="검색어를 입력하세요">
+    </form>
+    <i class="ri-arrow-up-s-line search-up"></i>
+    <i class="ri-arrow-down-s-line search-down"></i>
+    <p class="search-result"></p>
+  </div>
+
   <div class="util">
+    <i class="ri-search-line search-btn"></i>
     <i class="ri-moon-line mode-btn"></i>
     <i class="ri-font-size-2 font-btn"></i>
   </div>
+  
+  <!-- 2024.9.21 update end -->
   <div id="content">
     <h1 class="title">예비군 조직‧편성과 운영에 관한 훈령</h1>
     <div class="jang">제1장 총 칙</div>
-    <div class="jo">제1조(목적)</div>
+    <div class="jo" id="list1">제1조(목적)</div>
     <div> 이 훈령은「예비군법」,「병역법」등에 명시된 예비군의 조직․편성과 운영에관하여 필요한 지침과 절차 등을 규정함을 목적으로 하고, 명시되지 않은 사항은당해 연도 지침 또는 육군·해군(이하 “각 군”이라 한다.) 규정에 따른다.</div>
-    <div class="jo">제2조(정의)</div>
+    <div class="jo" id="list2">제2조(정의)</div>
     <div> 이 훈령에서 사용하는 용어의 뜻은 다음 각 호와 같다.</div>
     <div class="ho"> 1. “예비군”이란 「예비군법」에 따라 조직‧편성되는 개인 또는 부대를 말한다.</div>
     <div class="ho"> 2. “조직”이란 구성요원의 대상과 복무기간을 설정하는 것을 말한다.</div>
@@ -111,15 +294,15 @@
     <div class="ho"> 12. “국방동원정보체계”란 동원 및 예비군 관련된 정보자료(DB)를 국방부로부터 정부부처, 육·해·공군 및 해병대, 관련기관과 상호 공유하면서 업무를 처리하는 전산체계를 말한다.</div>
     <div class="ho"> 13. “예비군 주요 직위자”란 지역예비군 소대장(기동대 포함), 부중대장(부기동대장), 부지역대장, 지역대 참모 등을 말한다.</div>
     <div class="ho"> 14. “전역권부대”란 병역법 및 군인사법에 의한 전역 인사명령을 발할 수 있는 권한을 가진 부대를 말한다.</div>
-    <div class="jo">제3조(적용범위)</div>
+    <div class="jo" id="list3">제3조(적용범위)</div>
     <div> 이 훈령은 예비군업무를 담당하는 부대 및 관련기관에 적용한다.</div>
     <div class="jang">제2장 지 휘 체 계</div>
-    <div class="jo">제4조(예비군 지휘관리체계)</div>
+    <div class="jo" id="list4">제4조(예비군 지휘관리체계)</div>
     <div class="hang">1항. 국방부장관은 예비군 지휘관리에 대한 권한과 책임이 있다.</div>
     <div class="hang"> 2항. 각 군 참모총장은 지휘계통에 따라 예비군부대를 지휘관리하고, 예비군 조직및 편성에 관해서는 병무청장과 협조하고, 예비군 육성‧지원 및 지역방위작전에 관해서는 지방자치단체의 장 등 관계행정기관의 장과 협조한다.</div>
     <div class="hang"> 3항. 수임군부대와 예비군부대는 예속관계로 설정되고, 수임군부대장은 예하 부대장에게 예비군부대를 배속하며, 유사시 작전수행 상 지휘관계를 재설정할 수 있다.</div>
     <div class="hang"> 4항. 세부 예비군 지휘관리체계는 별표 2와 같다.</div>
-    <div class="jo">제5조(예비군 조직․편성과 운영에 관한 업무분장)</div>
+    <div class="jo" id="list5">제5조(예비군 조직․편성과 운영에 관한 업무분장)</div>
     <div> 예비군 조직‧편성 및 운영에 관한 업무분장은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 국방부 장관</div>
     <div> 가. 예비군 업무 총괄</div>
@@ -188,13 +371,13 @@
     <div> 사. 기타 위탁받은 업무</div>
     <div class="jang"> 제3장 예비군의 조직․편성 및 자원관리</div>
     <div class="jul">제1절 개 요</div>
-    <div class="jo">제6조(예비군 조직)</div>
+    <div class="jo" id="list6">제6조(예비군 조직)</div>
     <div> 예비군의 조직은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 예비역의 장교, 준사관, 부사관은 「군인사법」제8조제1항에 의한 현역군인 계급별 연령 정년이되는 해의 12월 31일까지 복무한다.</div>
     <div class="ho"> 2. 현역 또는 상근예비역 병으로 복무를 마친 사람(현역 복무를 마친 것으로 보는 사람을 포함한다.)은 복무를 마친 날의 다음날부터 8년이 되는 해의 12월 31일까지 복무한다.</div>
     <div class="ho"> 3. 사회복무요원, 예술‧체육요원, 공중보건의사, 병역판정검사전담의사, 공익 법무관, 공중방역수의사(공익수의사로 의무복무를 마친 사람을 포함한다.), 전문연구요원, 산업기능요원의 복무를 마친 보충역의 병(「병역법」제63조 제2항에 따라 현역병 또는 사회복무요원으로서 보충역에 편입되거나 소집이 해제된 사람을 포함한다.)은 그 복무를 마친 날의 다음 날부터 8년이 되는 해의 12월 31일까지 복무한다.</div>
     <div class="ho"> 4.「예비군법」제3조에 따라 대한민국의 국민으로서 예비군에 지원하여 선발된 사람은 편입 결정을 한 날부터 2년까지 복무하며, 복무연장을 원할 경우 복무기간을 연장할 수 있다.</div>
-    <div class="jo">제7조(예비군부대 편성체계)</div>
+    <div class="jo" id="list7">제7조(예비군부대 편성체계)</div>
     <div> 예비군부대 편성은 「예비군법」제3조2에 따라 국방부 장관이 정하고, 부대 유형별 편성체계는 다음 각 호와 같다.</div>
     <div class="ho"> 1. 지역예비군</div>
     <div> 가.수임군부대장은 지역예비군부대 편성사유가 발생한 때에는 각 군 참모총장을거쳐 국방부 장관의 승인을 받은 후 지방병무청장에게 예비군부대 편성계획을 통보한다.</div>
@@ -204,12 +387,12 @@
     <div> 나. 직장의 장(대학 총‧학장 포함)은 지방병무청장이 교부한 예비군 편성 계획에 의하여 직장예비군을 편성한다.</div>
     <div> 다.직장예비군 지휘관은 효율적인 자원관리 및 직장운영과 유사시 전투력 발휘가 용이하도록 예하제대를 편성한다.</div>
     <div>제 2 절 지역예비군 편성</div>
-    <div class="jo">제8조(편성원칙)</div>
+    <div class="jo" id="list8">제8조(편성원칙)</div>
     <div class="hang">1항. 지역예비군은 행정구역 단위로 지역대, 기동대 및 중대를 편성하며, 기동대 및 중대는 예하에 소대(반) 및 분대를 편성한다. 다만, 예비군자원과 작전지역의 여건을 고려하여 국방부장관이 정하는 기준에 따라 부대를 통합하거나 분리하여 편성할 수 있다.</div>
     <div class="hang"> 2항. 제1항에도 불구하고 다른 지역의 예비군자원이 부족하거나 그 밖에 불가피한 사유가 있는 경우에는 예비역 장교·준사관·부사관인 예비군대원을 시·군·자치구 내 인접지역으로 확산하여 편성할 수 있다.</div>
     <div class="hang"> 3항. 제1항에도 불구하고 국방부 장관은 지역방위를 위하여 특별히 필요한 경우에는 지역예비군대원 중에서 선발된 사람을 특전예비군지역대(중대), 여성예비군소대 등의 예비군부대로 편성할 수 있다. </div>
     <div class="hang"> 4항. 본부, 저격조, 박격포반, 감시정찰반 등은 해당 특기, 경력, 자격증 등을 고려하여 보직을 부여한다.</div>
-    <div class="jo">제9조(편성방법)</div>
+    <div class="jo" id="list9">제9조(편성방법)</div>
     <div class="hang">1항. 예비군지역대의 편성방법은 다음 각 호와같다</div>
     <div class="ho"> 1. 예비군지역대는 특별자치시·시(구가 있는 시 제외)·군·자치구 단위로 편성하되, 현역 부대 개편과 연계하여 편성한다.</div>
     <div class="ho"> 2. 예비군지역대 편성기구도는 별표 3과 같다.</div>
@@ -238,10 +421,10 @@
     <div class="ho"> 3. 시‧군‧구청이 위치한 읍·동 자원 중 5년차부터 6년차까지 자원으로 예비군소대에우선하여 편성하되, 자원 부족 시는 인접 읍‧면‧동 지역으로 확산하여편성할 수 있고, 이후에도 자원이 부족할 경우 7년차부터 8년차 순으로 확산 편성할 수 있다. 다만, 병력동원지정 제외지역의 경우 자원 부족시 1년차부터 6년차까지를 통합 편성할 수 있고, 이후에도 자원이 부족할 경우 7년차부터 8년차 순으로 확산 편성할 수 있다. </div>
     <div class="ho"> 4. 예비군기동대 편성기구도는 별표 8과 같다.</div>
     <div class="hang"> 4항. 예비군부대 명칭은「예비군법 시행규칙」제11조(부대명칭)에 따른다. 다만, 예비군부대 자원 등 고려 분리·창설 및 통·폐합 시 부대명칭 부여는 국방부 지침에 따른다.</div>
-    <div class="jo">제10조(편성 및 해체절차)</div>
+    <div class="jo" id="list10">제10조(편성 및 해체절차)</div>
     <div class="hang">1항. 수임군부대장은 매년 행정구역, 예비군자원, 각종 환경의 변화 등을 고려하여 지역예비군부대 편성(해체)계획을 지휘계통에 따라 국방부장관에게 보고한다.</div>
     <div class="hang"> 2항. 국방부 장관이 지역예비군부대 편성(해체)계획을 검토하여 그 결과를 수임군부대장에게 하달하면, 수임군부대장은 이를 시행 및 감독한다.</div>
-    <div class="jo">제11조(예비군 주요 직위자 임명 및 면직)</div>
+    <div class="jo" id="list11">제11조(예비군 주요 직위자 임명 및 면직)</div>
     <div class="hang">1항. 예비군 주요 직위자의 임명기준은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 예비군부지역대장과 부중대장(부기동대장)은 예비역 대위를 우선 편성하며, 예비군소대장과 예비군지역대 참모는 예비역 위관급 이하로 편성할 수 있다.</div>
     <div class="ho"> 2. 예비군 주요 직위자는 가급적 해당지역 내 자원으로 편성하며, 자원 부족 시 예비역 병을 제외하고 임명권자가 판단하여 시·군·자치구 내 인접지역으로 확산하여 편성할 수 있다.</div>
@@ -264,7 +447,7 @@
     <div> 라. 예비군부대 통‧폐합 등 부대사정에 의해 주요 직위자의 면직이 필요한 경우</div>
     <div class="ho"> 2. 예비군중대장은 1호 나‧다‧라목의 면직사유가 발생한 경우 면직사유서를 첨부하여 국방동원정보체계를 통해 임명권자에게 면직을 요청하고, 임명권자는 면직처리 후 인사명령을 하달한다.</div>
     <div class="ho"> 3. 예비군중대장은 예비군 주요 직위자의 면직 처리결과를 확인하고 면직 대상자에게 그 결과를 안내하여야 한다.</div>
-    <div class="jo">제12조(지역예비군부대계획)</div>
+    <div class="jo" id="list12">제12조(지역예비군부대계획)</div>
     <div> 국방부 장관은 예비전력관리 군무원의 인력운영효율성을 제고하기 위하여 중기, 연도, 수시 지역예비군부대계획(이하 “예비군부대계획”이라 한다.)을 수립 및 시행한다.</div>
     <div class="ho"> 1. 중기 예비군부대계획 작성 목적과 절차는 다음 각 목과 같다.</div>
     <div> 가. 향후 5년간(F+2∼F+6)의 예비군부대 창설 및 해체 등의 소요를 예비전력관리 군무원 정원 범위 내에서 검토․조정하여 중기 대상기간에시행할 부대계획을 수립함으로써, 연도 예비군부대계획 및 정원계획수립에 필요한 지침을 제공한다.</div>
@@ -285,7 +468,7 @@
     <div> 3) 국방부 장관은 수시 예비군부대계획 시행 5개월 전까지 확정 하달한다. 다만, 1)호 단서의 경우에는 시행 1개월 전까지 확정 하달할 수 있다.</div>
     <div class="ho"> 4. 세부적인 예비군부대계획 수립 절차는 별표 9와 같다.</div>
     <div>제 3 절 직장예비군 편성</div>
-    <div class="jo">제13조(편성원칙)</div>
+    <div class="jo" id="list13">제13조(편성원칙)</div>
     <div class="hang">1항. 직장예비군은 해당 직장 소속 예비군자원 수를 고려 여단, 연대, 대대, 중대, 소대, 분대로 편성하며, 자원규모에 따른 직장예비군부대 제대 편성기준은 별표 10과 같다. </div>
     <div class="hang"> 2항. 직장예비군은 형태와 특성에 따라 일반 직장예비군, 국가기관 직장예비군, 국가중요시설 직장예비군, 대학 직장예비군으로 편성한다.</div>
     <div class="hang"> 3항. 다음에 해당하는 직장은 직장예비군부대를 편성하여야 한다.</div>
@@ -303,7 +486,7 @@
     <div class="hang"> 11항. 직장의 장은 직장예비군지휘관이 「예비군법 시행규칙」 제14조제1항에 따른 임무를 수행할 수 있도록 다음 각 호를 고려하여야 한다.</div>
     <div class="ho"> 1. 「예비군법 시행령」 제5조제9항에 따라 직장예비군지휘관의 군 경력을 고려하여 별표 12와 같은 참모 조직을 운용할 수 있는 적정한 직급을 부여할 것</div>
     <div class="ho"> 2. 「예비군법 시행령」 제32조제1항제1호와 제2호에 따라 직장예비군부대의 업무여건을 보장하기 위한 사무실과 예비군 장비 및 물자 보관을 위한 장비고를 마련할 것</div>
-    <div class="jo">제14조 (편성방법)</div>
+    <div class="jo" id="list14">제14조 (편성방법)</div>
     <div class="hang">1항. 일반 및 국가기관 직장예비군 편성방법은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 제대별(여단∼독립소대) 직장예비군 편성기구도는 별표 11과 같다.</div>
     <div class="ho"> 2. 제대별 직장예비군부대 본부요원 편성기준 및 직급은 별표 12와 같다.</div>
@@ -323,7 +506,7 @@
     <div class="ho"> 4. 형태별 대학 직장예비군부대 편성기구도는 별표 13과 같다.</div>
     <div class="hang"> 4항. 분‧소대급 독립 직장예비군 지휘관의 임명기준은 제11조제1항제3호를 준용한다. 단, 임명 이후에 병역의 종류가 퇴역으로 변경된 경우 제16조에 따른 예비군으로 지원해야 한다.</div>
     <div class="hang"> 5항. 기타 직장예비군 편성방법에서 정하지 않은 사항은 지역예비군 편성방법을 준용한다.</div>
-    <div class="jo">제15조(편성 및 체절차)</div>
+    <div class="jo" id="list15">제15조(편성 및 체절차)</div>
     <div class="hang">1항. 직장예비군의 편성절차는 다음 각 호와 같다.</div>
     <div class="ho"> 1. 직장예비군을 편성하고자 하는 직장의 장(산업단지는 산업단지를 관리하는 자 포함)은 직장예비군 편성요건을 갖춘 후 직장예비군 편성 승인신청서 1부(「예비군법 시행규칙」 별지 제2호서식)와 직장예비군 편성요건 충족 현황서 및 편성대상자 연명부(「예비군법 시행규칙」 별지 제3호, 제4호서식) 2부를 관할 지방병무청장에게 제출한다.(부대규모 조정 시에도 동일한 절차를 적용한다.)</div>
     <div class="ho"> 2. 지방병무청장은 직장예비군 편성에 대한 의견요청서(「예비군법 시행규칙」 별지 제5호서식)를 수임군부대장에게 발송한다.</div>
@@ -339,9 +522,9 @@
     <div> 라. 직장의 장은 해체 직장예비군부대에서 관리하던 예비군 장비및 물자를 동일 계열 내 타 예비군부대로 관리전환하거나 수임군부대로 반납한다. 이에 대한 세부 내용은 각 군 참모총장이 정한다.</div>
     <div class="ho"> 3. 직장예비군을 해체한 직장은 해체한 날로부터 1년 이내에 직장예비군을 편성할 수 없다. </div>
     <div>제 4 절 지원예비군 편성</div>
-    <div class="jo">제16조(지원 대상)</div>
+    <div class="jo" id="list16">제16조(지원 대상)</div>
     <div> 예비군에 지원할 수 있는 자는 최종 선발 예정일을 기준으로 18세 이상이면서 임무를 수행할 수 있는 대한민국 국민이어야 한다. 다만, 「민방위기본법」 제19조에 따른 민방위대 대장 등 예비군으로 임무를 수행할 수 없는 자는 제외한다.</div>
-    <div class="jo">제17조(지원방법 및 처리절차)</div>
+    <div class="jo" id="list17">제17조(지원방법 및 처리절차)</div>
     <div class="hang">1항.예비군에 지원하고자 하는 자는 예비군편입지원서(「예비군법 시행규칙」별지제1호서식)를 지역 또는 직장예비군지휘관에게 제출한다. 다만, 미성년자는 친권자또는 후견인의 동의서를 첨부하여야 하고, 귀화자는 국적취득사실증명서 또는 주민등록표 등본을 첨부하여야 한다.</div>
     <div class="hang"> 2항.지원서를 받은 예비군지휘관(지역 및 직장)의 처리절차는 다음 각 호와 같다.</div>
     <div class="ho"> 1.지역 또는 직장예비군지휘관이 예비군 편입지원서를 받은 때에는 임무수행 가능여부를 판단하여 3일 이내에 국방동원정보체계를 이용하여 관할 지방병무청장에게 전송한다.</div>
@@ -352,7 +535,7 @@
     <div class="ho"> 2.지원예비군이 해당 읍·면·동 지역 외 주소지로 이전하거나, 소속 직장에서 퇴직 또는 다른 직장으로 전출한 경우에는 지원에 의한 예비군 복무의무는 해지된다. </div>
     <div class="ho"> 3. 지원예비군 탈퇴를 희망할 경우 별지 제2호서식의 지원예비군 탈퇴 지원서를 작성하여 소속 예비군지휘관을 거쳐 관할 지방병무청장에게 제출하면 예비군 조직에서 제외된다.</div>
     <div class="ho"> 4.지원예비군 편입(복무연장)지원서, 지원예비군 탈퇴 지원서 보존기간은 3년으로 한다.</div>
-    <div class="jo">제18조(여성예비군 편성)</div>
+    <div class="jo" id="list18">제18조(여성예비군 편성)</div>
     <div class="hang">1항.여성예비군부대는 다음 각 호와 같이 편성한다.</div>
     <div class="ho"> 1. 여성예비군부대는 시(구가 없는 시)·군·구별 또는 직장예비군부대에 1개 소대 이상 편성할 수 있다.</div>
     <div class="ho"> 2. 부대 명칭은 여성예비군소대로 한다.</div>
@@ -370,7 +553,7 @@
     <div class="hang"> 3항. 부대해체 절차는 다음 각 호와 같다.</div>
     <div class="ho"> 1. 사회적 물의 야기 시, 훈련군기 문란 및 훈련참석률 저조 시, 편성기준에부족한 기간이 1년 이상 지속시, 기타 해체 필요시 수임군부대장이 판단하여 해당 각 군 참모총장에게 해체여부를 보고한다.</div>
     <div class="ho"> 2. 해당 각 군 참모총장의 해체승인을 득한 수임군부대장은 부대를 해체하고해체결과를 지방병무청장과 관련 지방자치단체의 장(직장의 장)에 통보한다.</div>
-    <div class="jo">제19조(특전예비군 편성)</div>
+    <div class="jo" id="list19">제19조(특전예비군 편성)</div>
     <div class="hang">1항. 특전예비군부대는 다음 각 호와 같이 편성한다. </div>
     <div class="ho"> 1. 특전예비군부대 편성은 특별자치시, 시(구가 없는 시)‧군‧자치구 단위로 특전예비군중대와 광역시·특별자치시·도 및 특별자치도 단위 특전예비군지역대를편성한다. 다만, 광역시‧도에 2개 이상의 수임군부대가 있는 경우 부대별로 특전예비군지역대를 편성할 수 있다.</div>
     <div class="ho"> 2. 특전예비군부대는 특전사 출신 예비역(병) 중, ‘예비군 7년차 이상 희망자’와예비군편성 제외자 및「군 인사법」에 의한 계급별 연령정년 초과자 중 지원하여 선발된 예비군을 대상으로 편성한다. </div>
@@ -388,10 +571,10 @@
     <div class="ho"> 6. 창설식은 소속 지방자치단체장과 수임군부대가 합동으로 시행하며, 세부절차는 각 군 참모총장이 정한다.</div>
     <div class="hang"> 3항. 해체 절차는 여성예비군부대의 해체 절차와 동일하다.</div>
     <div>제 5 절 예비군 추가 편성</div>
-    <div class="jo">제20조(추가 편성 대상)</div>
+    <div class="jo" id="list20">제20조(추가 편성 대상)</div>
     <div class="hang">1항. 국방부 장관은 「병역법」제72조와 「예비군법 시행령」제4조에 따라, 「예비군법」제3조에 규정된 조직 기간이 지난 40세 이하의 예비역 및 보충역의 병을 예비군에 추가 편성할 수 있다.</div>
     <div class="hang"> 2항. 제1항에도 불구하고「병역법」제83조에 따라 대상자를 45세 이하의 예비역 및 보충역의 병으로 확대하여 추가 편성할 수 있다.</div>
-    <div class="jo">제21조(추가 편성 절차)</div>
+    <div class="jo" id="list21">제21조(추가 편성 절차)</div>
     <div class="hang">1항. 국방부 장관은 필요시 수임군부대장 및 병무청장에게 예비군 추가 편성을 지시함과 동시에 추가 편성 대상자와 대상지역 그리고 필요한 사항을 신문․방송 기타 적절한 방법으로 공고하고, 행정안전부장관에게 추가 편성대상자의 민방위대 편성 제외 및 주소지 무단이탈 방지를 위한 대책을 협조한다.</div>
     <div class="hang"> 2항.병무청장은 지방병무청장에게 예비군을 추가 편성하도록 조치하고, 지방병무청장은 추가 편성자의 예비군 편성카드를 작성하여 지역예비군지휘관에게 국방동원정보체계를 통해 송부하며, 해당 예비군지휘관은 추가편성 예비군에게 이를 통지한다.</div>
     <div class="hang"> 3항.병무청장은 예비군 추가 편성 완료 결과를 국방부 장관에게 보고한다.</div>
@@ -399,7 +582,7 @@
     <div class="hang"> 5항.추가 편성 시 가용자원이 부족한 지역에서는 예비군소대에 통합 편성하고,가용자원이 충분한 지역에서는 별도의 소대를 편성한다.</div>
     <div class="hang"> 6항.별도의 소대로 예비군 추가편성은 35세 이하자와 36세 이상자로 제대를 구분하여 편성하고, 지역예비군 동원 시에는 35세 이하자로 편성된 제대부터 순차적으로 동원한다.</div>
     <div>제 6 절 예비군 자원관리</div>
-    <div class="jo">제22조(예비군 신규조직 절차)</div>
+    <div class="jo" id="list22">제22조(예비군 신규조직 절차)</div>
     <div class="hang">1항. 전역권부대장(복무부대) 및 복무기관장의 예비군 신규조직 업무 절차는다음 각 호와 같다.</div>
     <div class="ho"> 1. 군복무만료자 등의 병적자료(전산자료 포함)를 전역일 또는 소집해제된 날부터7일 이내에 병무청장에게 송부한다.</div>
     <div class="ho"> 2. 전역권부대장 및 복무기관장은 병적자료 송부현황을 매 분기 말일 기준 다음 달 10일까지 병무청장에게 통보한다.</div>
@@ -408,11 +591,11 @@
     <div class="ho"> 1. 군복무만료자 등의 병적자료에 따라 예비군 조직에 필요한 필수항목을 해당전역권부대에 확인하여 전산 입력한다.</div>
     <div class="ho"> 2. 군복무만료자 등의 전산자료를 통보받아 착오여부를 확인하여 예비군에 조직하고, 예비군 신규 편성카드를 국방동원정보체계를 통해 해당 지역예비군부대별로 전송한다.</div>
     <div class="hang"> 3항. 예비군지휘관은 지방병무청장으로부터 국방동원정보체계를 통해 신규 예비군의예비군 편성카드를 전송받으면 보직 후 관리한다.</div>
-    <div class="jo">제23조(예비군 신상변동자 관리절차)</div>
+    <div class="jo" id="list23">제23조(예비군 신상변동자 관리절차)</div>
     <div class="hang">1항.병무청장은 행정안전부의 행정 전산망과 연계하여 주소지 이동 등 예비군 신상변동자료를 관할 지방병무청별로 구분하여 일일 전송한다.</div>
     <div class="hang"> 2항.지방병무청장은 병무청장으로부터 전송받은 신상변동자료에 따라 예비군편성카드를 정리하여 병무청으로 전송하고, 예비군 편성정보를 국방동원정보체계를 통해 예비군부대로 전송한다.</div>
     <div class="hang"> 3항.직장예비군이 편성된 직장의 장(이하 “직장의 장”이라 한다.)은 소속예비군의모든 신상변동사유(전입, 전출, 퇴직, 보류 조치 및 해소 등) 발생 시 3일이내 국방동원정보체계를 통해 해당 직장을 관할하는 지방병무청장에게 전송하며, 전송받은 지방병무청장은 예비군 편성카드를 수정 후 해당 예비군부대로 통보한다.</div>
-    <div class="jo">제24조(전입 및 전출자 발생 시 조치절차)</div>
+    <div class="jo" id="list24">제24조(전입 및 전출자 발생 시 조치절차)</div>
     <div class="hang">1항. 지역예비군이 주소지 이전 시 조치절차는 다음 각 호와 같다.</div>
     <div class="ho"> 1. 예비군이 주소지를 이전할 경우 해당 예비군에 대한 편성정보는 국방동원정보체계를 통해 신 주소지 지역예비군지휘관에게 전송된다.</div>
     <div class="ho"> 2. 신 주소지 지역예비군지휘관은 편성지침에 의해 개인별 보직 부여, 예비군편성카드 수정 등의 조치를 해야 한다.</div>
@@ -454,9 +637,9 @@
     <div class="ho"> 3. 현 소재지 지방병무청장으로부터 직장예비군부대의 이동사항을 통보받은신소재지 지방병무청장은 신소재지 수임군부대장에게 통보하여야 한다.</div>
     <div class="ho"> 4. 신소재지 수임군부대장은 직장예비군부대가 이전해 온 사실을 소재지 예하부대에 하달하고, 이를 접수한 예하부대장들은 직장예비군부대가이전해 온 사실을 확인하며, 지휘계통에 따라 직장예비군부대를 관리한다.</div>
     <div class="ho"> 5. 직장 이전이 완료되면 직장의 장은 신소재지 수임군부대장에게 직장예비군부대이동 완료 사실을 3일 이내에 통보하여야 한다.</div>
-    <div class="jo">제25조(재복무자의 예비군 복무연차 적용)</div>
+    <div class="jo" id="list25">제25조(재복무자의 예비군 복무연차 적용)</div>
     <div> 현역복무 후 재복무하여 전역한 자의 예비군 복무연차 적용 기준은 별표 18과 같다.</div>
-    <div class="jo">제26조(예비역 간부 진급)</div>
+    <div class="jo" id="list26">제26조(예비역 간부 진급)</div>
     <div class="hang">1항. 전시 부족한 상위 계급의 동원 가용자원을 확보하고 예비역 간부의 복무의욕을 증진하기 위해 예비역 간부 진급제도를 시행한다.</div>
     <div class="hang"> 2항. 예비역 간부 진급대상은 각 호와 같으며, 계급 및 연령별 예비역 진급대상기준은 별표 19와 같다. 다만, 당해 연도「예비역 간부 진급에 관한 지시」에 따른다.</div>
     <div class="ho"> 1. 「병역법」제5조에 의한 병역의 종류가 예비역인 자</div>
@@ -470,26 +653,26 @@
     <div class="ho"> 2. 진급명령은 교육수료와 동시 발령하고, 장교는 국방부 장관, 부사관은각 군 참모총장이 임명장을 수여한다.</div>
     <div class="ho"> 3. 각 군 참모총장은 예비역 부사관 진급발령자 명부를 병무청에 송부하며,국방부장관은 예비역 장교 진급발령자 명부를 각 군 및 병무청에 송부한다.</div>
     <div class="ho"> 4. 지방병무청장은 진급발령자 명부 접수 후 30일 이내에 병적을 정리하고, 진급자의 동원지정결과를 국방부 및 각 군에 송부한다.</div>
-    <div class="jo">제27조(예비군 보류자 관리)</div>
+    <div class="jo" id="list27">제27조(예비군 보류자 관리)</div>
     <div> 예비군 보류와 관련하여 보류제도, 보류승인 및 해소절차, 보류자 편성 등의 내용은「예비군 교육훈련 훈령」제6장 제23조(예비군훈련 보류)를 따른다.</div>
     <div class="jang">제4장 예비군 운용</div>
-    <div class="jo">제28조(무장)</div>
+    <div class="jo" id="list28">제28조(무장)</div>
     <div class="hang">1항. 합참의장은 전투수행을 위한 작전소요를 적 위협, 지형, 가용자원 등을 고려하여 판단하고, 각 군 참모총장은 작전소요에 필요한 장비 및 물자를 평시 확보해야 한다.</div>
     <div class="hang"> 2항. 예비군은 개인장구류와 개인화기 및 탄약, 수류탄 등을 휴대한다.</div>
     <div class="hang"> 3항. 지역예비군소대는 공용화기로 유탄발사기를 운용하고, 예비군기동대는 기관총, 유탄발사기, 박격포 등을 운용한다.</div>
     <div class="hang"> 4항. 지역예비군소대(예비군기동대 소대 포함)는 저격조(저격수, 관측수)를 지정하여 운용한다.</div>
     <div class="hang"> 5항. 세부 예비군 무기 및 탄약 휴대기준, 예비군 저격조 조준경 보유기준은 별표 20과 같다.</div>
-    <div class="jo">제29조(지휘통신)</div>
+    <div class="jo" id="list29">제29조(지휘통신)</div>
     <div class="hang">1항. 예비군 작전 시 효율적인 지휘통제를 보장하기 위해 유․무선통신은 물론 부가적인 통신대책(시호통신 등)을 강구해야 한다.</div>
     <div class="hang"> 2항. 지휘통신체계는 유선, 무선망(전투무선망, 상용무선망 등)을 이용하여 구성하고, 특히 무선망의 경우 통신전자운용지시를 운용하여 보안대책을강구해야 한다.</div>
     <div class="hang"> 3항. RSOI(Reception, Staging, Onward movement and Integration, 수용, 대기,전방이동 및 통합 또는 전시증원연습), NEO(Noncombatant Evacuation Operation, 비전투원후송작전) 등 지원 시에는 작전통제부대(현역부대)의 전투무선망을 이용하여 경계담당 부대, 이동 및 호송부대 간 통신체계를구축해야 한다.</div>
     <div class="hang"> 4항. 통합방위작전을 위한 군․경 합동상황실에는 유‧무선 통신대책을 강구하고,전장정보 공유를 위해 전술 C4I체계를 관리대대장 책임 하에 운용할 수 있다.</div>
-    <div class="jo">제30조(동원체계)</div>
+    <div class="jo" id="list30">제30조(동원체계)</div>
     <div class="hang">1항. 지역예비군 동원령은 국방부 장관 또는 수임군부대장 및 수탁경찰서장이발령한다.</div>
     <div class="hang"> 2항. 지역예비군 동원령의 전파 방법은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 예비군 지휘계통의 비상연락망, 중앙·지방 매스컴 등 공공 전파수단, 경찰‧행정관서의 전파수단, 지역 단위 연락체계 등 다중연락체계를 활용한다.</div>
     <div class="ho"> 2. 예비군지휘관은 신속한 경보전파를 위하여 예비군소대별 비상소집망을 유지하고,예비군대원으로 하여금 출타 시 명령 대리 수령인을 선정하게 조치하며,명령 대리 수령인의 주소, 연락처, 성명 및 본인과의 관계 등을 확보하는등 연락대책을 사전 강구해야 한다.</div>
-    <div class="act hang"> 3항. 지역예비군 동원령 발령시 동원명령을 받은(직접 또는 간접방법) 예비군은동원 발령일시부터 「예비군법 시행령」제 12조에 명시된 시간 내에 집결장소에도착하여야 한다. 다만, 부득이한 사유가 발생된 경우에는 소속 예비군지휘관에게 전화 등 가용한 방법으로 보고 후 조치를 받아야 한다.</div>
+    <div class="hang"> 3항. 지역예비군 동원령 발령시 동원명령을 받은(직접 또는 간접방법) 예비군은동원 발령일시부터 「예비군법 시행령」제 12조에 명시된 시간 내에 집결장소에도착하여야 한다. 다만, 부득이한 사유가 발생된 경우에는 소속 예비군지휘관에게 전화 등 가용한 방법으로 보고 후 조치를 받아야 한다.</div>
     <div class="hang"> 4항. 무기 및 탄약분배는 다음 각 호와 같이 시행한다.</div>
     <div class="ho"> 1. 관리대대 및 예비군부대는 지역예비군 동원령 발령 시 최단시간 내 분배및 지급할 수 있도록 부대별로 계획을 수립하고, 수송 및 분배체계를 갖추어야 한다.</div>
     <div class="ho"> 2. 무기 및 탄약 수송 간 안전대책을 강구하고, 분배 후 잔여 총기 및 탄약은회수하여 경계병 등 경계대책이 강구된 무기고 및 탄약고 등 안전한 시설에보관해야 한다.</div>
@@ -503,7 +686,7 @@
     <div class="ho"> 1. 지역예비군 동원해제권자는 책임지역 내 작전이 종결되었을 경우 지역안정도 평가, 지방자치단체장 요구, 주민 및 언론동향, 경제활동 등 종합적인 상황을고려하여지역 단위 동원을 해제한다.</div>
     <div class="ho"> 2. 국방부 장관은 작전 종결 여부, 정치, 경제, 국민 여론, 동원지역 수임군부대장의 의견 등을 종합적으로 고려하여 전국 단위 동원을 해제한다.</div>
     <div class="hang"> 8항. 지역예비군 동원 사후처리에 대해서는 「국방동원업무에 관한 훈령」제80조를적용한다.</div>
-    <div class="jo">제31조(운용방법)</div>
+    <div class="jo" id="list31">제31조(운용방법)</div>
     <div class="hang">1항. 예비군은 수임군부대장으로부터 권한을 위임받은 관리대대장 또는 위탁받은경찰서장의 지휘를 받아 운용한다.</div>
     <div class="hang"> 2항. 지역예비군은 책임지역내로 침투하는 적을 조기에 발견하여 능력 범위 내에서 격멸하기 위해 임무와 상황에 따라 다양하게 운용한다.</div>
     <div class="ho"> 1. 국가 및 군사중요시설, 핵심노드를 방호하고, 취약지역 통제를 위해“목”진지,검문소 등 일정지역에 배치한다.</div>
@@ -514,19 +697,19 @@
     <div class="hang"> 6항. 재난 시 동원 등 이 훈령에서 명시되지 않은 사항은 「국방동원업무에 관한 훈령」을 적용한다.</div>
     <div class="jang">제5장 예비군 근무운영</div>
     <div>제 1 절</div>
-    <div class="jo">제32조 삭제</div>
+    <div class="jo" id="list32">제32조 삭제</div>
     <div>제33조</div>
-    <div class="jo">제34조 삭제</div>
-    <div class="jo">제35조 삭제</div>
-    <div class="jo">제36조 삭제</div>
-    <div class="jo">제37조 삭제</div>
-    <div class="jo">제38조 삭제</div>
-    <div class="jo">제39조 삭제</div>
-    <div class="jo">제40조 삭제</div>
-    <div class="jo">제41조 삭제</div>
-    <div class="jo">제42조 삭제</div>
+    <div class="jo" id="list33">제34조 삭제</div>
+    <div class="jo" id="list34">제35조 삭제</div>
+    <div class="jo" id="list35">제36조 삭제</div>
+    <div class="jo" id="list36">제37조 삭제</div>
+    <div class="jo" id="list37">제38조 삭제</div>
+    <div class="jo" id="list38">제39조 삭제</div>
+    <div class="jo" id="list39">제40조 삭제</div>
+    <div class="jo" id="list40">제41조 삭제</div>
+    <div class="jo" id="list41">제42조 삭제</div>
     <div>제 2 절 예비군 감사 및 법규 위규자 처리</div>
-    <div class="jo">제43조(예비군 감사)</div>
+    <div class="jo" id="list42">제43조(예비군 감사)</div>
     <div> 예비군 감사는「예비군법 시행령」제31조와 「예비군법 시행규칙」제30～37조까지의 내용에 따라 정기감사와 특별감사로 구분하여 적용하며 세부 감사방법 및 절차는 각 군의 지침에 따라 시행한다.</div>
     <div class="ho"> 1. 정기감사는 수임군부대장이 다음 각 호와 같이 실시한다.</div>
     <div> 가. 감사대상은 수임군부대 예하 동원업무 및 예비군업무를 관장하는 군부대, 지역예비군 및 직장예비군부대, 직장예비군이 설치되어있는 직장이다. </div>
@@ -541,7 +724,7 @@
     <div class="ho"> 2. 특별감사는 각 군 참모총장이 다음 각 호와 같이 실시한다.</div>
     <div> 가. 각 군 참모총장은 예하부대, 예비군업무와 관계되는 행정관서 등에 대해 매년 실시하되, 각 군 참모총장이 주기를 조정할 수 있으며, 국방부 직할부대에 대해서는 육군 참모총장이 실시한다.</div>
     <div> 나. 각 군 참모총장은 정기감사 및 특별감사 결과를 종합하여 다음해 1월까지 국방부 장관에게 보고한다.</div>
-    <div class="jo">제44조(예비군법 위반자 처리)</div>
+    <div class="jo" id="list43">제44조(예비군법 위반자 처리)</div>
     <div> 「예비군법」위반자에 대한 처벌기준과 처리절차는 다음 각 호와 같다.</div>
     <div class="ho"> 1. 위반자에 대한 처벌기준은「예비군법」제15조(벌칙)를 따른다.</div>
     <div class="ho"> 2.「예비군법」위반자에 대한 처리 절차는 다음 각 목과 같다. </div>
@@ -560,11 +743,11 @@
     <div> 1) 관리대대장은 예비군지휘관으로부터 보고받은 위반자를 종합하여위원장(관리대대장) 및 3인 이상의 위원으로 하는 고발심사위원회를 구성 심의하고, 심의 후 14일 이내 별지 제6호서식에 의한 구비서류를 첨부하여 경찰서장에게 통보한다. 다만, 관리대대장이 부득이한 사유로 위원회에 참석할 수 없을 경우 지역대장이 그 직무를 대리하여 수행한다.</div>
     <div> 2) 경찰서로부터 결과 접수 시 국방동원정보체계의 예비군 편성카드에결과를 기록한다.</div>
     <div class="jang">제6장 예비군 군수관리</div>
-    <div class="jo">제45조(보급지원계통)</div>
+    <div class="jo" id="list44">제45조(보급지원계통)</div>
     <div class="hang">1항. 육군의 예비군부대에 대한 보급지원계통은 군부대 보급시설에서 예하 대대 및 예비군부대를 대상으로 지원하며 보급품에 대한 분배는 수임군부대 시설에서 예하 대대 및 예비군부대로 분배한다.</div>
     <div class="hang"> 2항. 해군의 예비군부대에 대한 보급지원계통은 수임군부대에서 관리대대를 경유하여 예비군부대 대상으로 지원한다.</div>
     <div class="hang"> 3항. 세부 예비군부대 보급지원계통은 별표 22과 같다.</div>
-    <div class="jo">제46조(무기 및 탄약)</div>
+    <div class="jo" id="list45">제46조(무기 및 탄약)</div>
     <div class="hang">1항. 무기 및 탄약의 획득, 분배방법은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 전·평시 작전으로 인한 탄약 기본휴대량의 소모보충은 수임군부대의 군수참모가 작전참모의 협조를 받아 보급하고, 재고부족 시는 각 군에서 조치한다.</div>
     <div class="ho"> 2. 수임군부대와 원거리에 위치하여 작전하는 예비군은 가장 가까운 여단(연대)급 이상 부대장에게 통제권을 위임할 수 있다.</div>
@@ -583,7 +766,7 @@
     <div class="hang"> 5항. 무기 및 탄약의 분배계획 및 훈련은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 무기 및 탄약을 보관하고 있는 관리대대장(수탁 경찰서장) 및 예비군지휘관은무기 및 탄약분배 계획을 작성 유지한다.</div>
     <div class="ho"> 2. 분배훈련은 감사, 훈련 시 실시할 수 있다.</div>
-    <div class="jo">제47조(통신장비)</div>
+    <div class="jo" id="list46">제47조(통신장비)</div>
     <div class="hang">1항. 통신장비의 보급은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 통신장비 보급은 각 군의 보급방침에 따라 보급한다.</div>
     <div class="ho"> 2. 통신장비는 수령과 동시에 장비등록 절차에 따라 재산에 등록해야 한다.</div>
@@ -592,11 +775,11 @@
     <div class="ho"> 2. 군용전화기는 가용범위 내에서 체신전화 가설 불가지역 및 필요지역(무기고 등)에 설치 운영할 수 있다.</div>
     <div class="hang"> 3항. 통신장비의 정비운영은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 이동정비반에 의한 순회정비 지원은 지원시설 계획에 따라 시행하고, 부대정비 계단을 초과한 고장장비는 지원시설에 반납한다.</div>
-    <div class="jo">제48조(기동장비)</div>
+    <div class="jo" id="list47">제48조(기동장비)</div>
     <div class="hang">1항. 기동장비의 보급 및 관리유지는 다음 각 호와 같다.</div>
     <div class="ho"> 1. 수임군부대장은 평시 예비군부대에 소요되는 차량을 통합방위지원본부의 지원을 받아 활용할 수 있도록 준비하며, 전시에는 동원지정차량을 활용할 수 있도록 준비한다.</div>
     <div class="ho"> 2. 수임군부대장은 시·도 통합방위협의회를 통해 지원계획을 협의하여 유사시 차량활용이 가능토록 협조하며, 전시에는 동원지정차량을 활용할 수 있도록 계획한다.</div>
-    <div class="jo">제49조(개인피복 및 개인장구류)</div>
+    <div class="jo" id="list48">제49조(개인피복 및 개인장구류)</div>
     <div class="hang">1항. 개인피복은 예비군복과 저장보관 중인 피복으로 구분하며, 예비군복은 전역 시 개인 지참 품목을 활용하고, 저장보관 중인 피복 및 개인장구류는 작전소요량에 따라 예비군부대에서 보유하여 예비군에게 지급한다.</div>
     <div class="hang"> 2항. 저장보관 중인 피복 및 개인장구류의 보급방법은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 예비군기동대, 전방군단 주민이동지역 예비군부대, 특전예비군부대의 완전군장지급대상 품목은 연차적으로 보급하며 특별소요에 의한 물자보급은 별도방침에 의한다.</div>
@@ -608,7 +791,7 @@
     <div class="ho"> 4. 관리대대장 및 예비군지휘관은 신속한 동원을 위하여 장비 및 물자 분배계획, 수송계획을 수립하여 비상 시에 대비해야 한다.</div>
     <div class="ho"> 5. 저장 보관중인 피복 및 개인장구류는 비상 시 지역예비군 동원에 한하여 운영하며 평시 훈련 등 타목적으로 사용을 금한다. 다만, 방탄헬멧(위장포), 개인장구요대, 소화기탄입대, 수통(피), 우의는 훈련 시 사용할 수 있다.</div>
     <div class="ho"> 6. 지역예비군 장비 및 물자 중 초과보유 품목에 대한 처리는 군수품관리법에의해 처리한다.</div>
-    <div class="jo">제50조(시설)</div>
+    <div class="jo" id="list49">제50조(시설)</div>
     <div class="hang">1항. 장비고 관리는 다음 각 호와 같다.</div>
     <div class="ho"> 1. 장비고는 해당 예비군부대 내 또는 예비군부대 최기 지역에 설치하는 것을 원칙으로 한다.</div>
     <div class="ho"> 2. 장비고에는 화재예방, 도난방지를 포함한 일련의 방호대책을 강구해야 한다.</div>
@@ -619,53 +802,245 @@
     <div class="ho"> 2. 예비군 무기고 관리책임자</div>
     <div> 가. 관리대대장 이상 지휘관(수탁 경찰서장)은 절차에 의하여 무기고 관리책임자(정‧부)를 임명한다.</div>
     <div> 나. 임명권자는 관리책임자(정․부) 중 결격사유가 발생한 경우 지체 없이해임하고 그 후임자를 새로 임명하여야 한다.</div>
-    <div class="jo">제51조(관리전환)</div>
+    <div class="jo" id="list50">제51조(관리전환)</div>
     <div> 관리전환은 국방부「군수품 관리 훈령」제8장을 따른다. 다만, 예비군육성지원 예산으로 획득한 군수품에 대한 관리전환의 목적과 승인권자는 다음 각호와 같다.</div>
     <div class="ho"> 1. 초과 및 잉여품에 대한 관리전환은 작전소요 변경에 따른 후속조치 및 지역방위작전을 위한 경우에 한한다.</div>
     <div class="ho"> 2. 수임군부대내의 관리전환은 수임군부대장이 승인하고, 수임군부대간의 관리전환은 육·해군 참모총장 및 해병대사령관이 승인하며, 육·해군 및 해병대간 관리전환은 국방부장관이 승인한다. 이 경우, 관리전환의 대상이 되는 초과 및 잉여품을 보유하고 있는 관리대대장은 해당 지자체장과 관리전환을 사전에 협의하여야 한다.</div>
-    <div class="jo">제52조(감시장비 등)</div>
+    <div class="jo" id="list51">제52조(감시장비 등)</div>
     <div class="hang">1항. 감시장비 등의 보급은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 감시장비 보급은 각 군의 보급방침에 따라 보급한다.</div>
     <div class="ho"> 2. 장비는 수령과 동시에 장비등록 절차에 따라 재산에 등록해야 한다.</div>
     <div class="hang"> 2항. 감시장비 등의 관리유지는 다음 각 호와 같다.</div>
     <div class="ho"> 1. 이동정비반에 의한 순회정비 지원은 지원시설계획에 따라 시행하고, 지원시설 정비가 제한되는 품목은 육성지원예산으로 정비한다.</div>
     <div class="jang">제7장 삭제</div>
-    <div class="jo">제53조 삭제</div>
-    <div class="jo">제54조 삭제</div>
-    <div class="jo">제55조 삭제</div>
-    <div class="jo">제56조 삭제</div>
-    <div class="jo">제57조 삭제</div>
-    <div class="jo">제58조 삭제</div>
-    <div class="jo">제59조 삭제</div>
-    <div class="jo">제60조 삭제</div>
-    <div class="jo">제61조 (재검토 기한)</div>
+    <div class="jo" id="list52">제53조 삭제</div>
+    <div class="jo" id="list53">제54조 삭제</div>
+    <div class="jo" id="list54">제55조 삭제</div>
+    <div class="jo" id="list55">제56조 삭제</div>
+    <div class="jo" id="list56">제57조 삭제</div>
+    <div class="jo" id="list57">제58조 삭제</div>
+    <div class="jo" id="list58">제59조 삭제</div>
+    <div class="jo" id="list59">제60조 삭제</div>
+    <div class="jo" id="list60">제61조 (재검토 기한)</div>
     <div> 국방부장관은 이 훈령에 대하여 2024년 1월 1일을 기준으로 매 3년이 되는 시점마다 그 타당성을 검토하여 개선 등의 조치를 하여야 한다.</div>
   </div>
 
-<script>
-  /*book*/
-const modebtn = document.querySelector('.mode-btn');
-const fontbtn = document.querySelector('.font-btn');
-const body = document.querySelector('body');
-modebtn.addEventListener('click',()=>{
-  console.log('mode-btn');
-  body.classList.toggle('dark-mode');
-  if(body.classList.contains('dark-mode')){
-    modebtn.style.color='orange';
-  }else{
-    modebtn.style.color='white';
-  }
-})
-fontbtn.addEventListener('click',()=>{
-  console.log('font');
-  body.classList.toggle('large-font');
-  if(body.classList.contains('large-font')){
-    fontbtn.style.color='orange';
-  }else{
-    fontbtn.style.color='white';
-  }
-});
-</script>
+  <script>
+    /*book*/
+    const modebtn = document.querySelector('.mode-btn');
+    const fontbtn = document.querySelector('.font-btn');
+    const body = document.querySelector('body');
+    modebtn.addEventListener('click', () => {
+      console.log('mode-btn');
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        modebtn.style.color = 'orange';
+      } else {
+        modebtn.style.color = 'white';
+      }
+    })
+    fontbtn.addEventListener('click', () => {
+      console.log('font');
+      body.classList.toggle('large-font');
+      if (body.classList.contains('large-font')) {
+        fontbtn.style.color = 'orange';
+      } else {
+        fontbtn.style.color = 'white';
+      }
+    });
+
+
+    /* 2024.9.20 update */
+    const navMenu = document.querySelector(".nav-menu");
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(navLink => {
+      navLink.addEventListener("click", () => {
+        navMenu.classList.remove("show-menu");
+      })
+    })
+
+    /*============= swipe screen - show menu ===============*/
+
+    let touchArea = document.querySelector("body");
+
+    //Initial mouse X and Y positions are 0
+
+    let mouseX,
+      initialX = 0;
+    let mouseY,
+      initialY = 0;
+    let isSwiped;
+
+    //Events for touch and mouse
+    let events = {
+      mouse: {
+        down: "mousedown",
+        move: "mousemove",
+        up: "mouseup",
+      },
+      touch: {
+        down: "touchstart",
+        move: "touchmove",
+        up: "touchend",
+      },
+    };
+
+    let deviceType = "";
+
+    //Detect touch device
+
+    const isTouchDevice = () => {
+      try {
+        //We try to create TouchEvent (it would fail for desktops and throw error)
+        document.createEvent("TouchEvent");
+        deviceType = "touch";
+        return true;
+      } catch (e) {
+        deviceType = "mouse";
+        return false;
+      }
+    };
+
+    //Get left and top of touchArea
+    let rectLeft = touchArea.getBoundingClientRect().left;
+    let rectTop = touchArea.getBoundingClientRect().top;
+
+    //Get Exact X and Y position of mouse/touch
+    const getXY = (e) => {
+      mouseX = (!isTouchDevice() ? e.pageX : e.touches[0].pageX) - rectLeft;
+      mouseY = (!isTouchDevice() ? e.pageY : e.touches[0].pageY) - rectTop;
+    };
+
+    isTouchDevice();
+
+    //Start Swipe
+    touchArea.addEventListener(events[deviceType].down, (event) => {
+      isSwiped = true;
+      //Get X and Y Position
+      getXY(event);
+      initialX = mouseX;
+      initialY = mouseY;
+    });
+
+    //Mousemove / touchmove
+    touchArea.addEventListener(events[deviceType].move, (event) => {
+      if (!isTouchDevice()) {
+        event.preventDefault();
+      }
+      if (isSwiped) {
+        getXY(event);
+        let diffX = mouseX - initialX;
+        if (diffX > 100) {
+          navMenu.classList.remove('show-menu')
+        }
+        if (diffX < -100) {
+          navMenu.classList.add('show-menu')
+        }
+      }
+    });
+
+    //Stop Drawing
+    touchArea.addEventListener(events[deviceType].up, () => {
+      isSwiped = false;
+    });
+
+    touchArea.addEventListener("mouseleave", () => {
+      isSwiped = false;
+    });
+
+    window.onload = () => {
+      isSwiped = false;
+    };
+
+    /*============= swipe screen - show menu ===============*/
+  /*search 2024.09.21 update add start*/ 
+    const contentElement = document.getElementById('content');
+    const searchInput = document.querySelector('.search-input');
+    const searchResult = document.querySelector('.search-result');
+    const searchUp = document.querySelector('.search-up');
+    const searchDown = document.querySelector(".search-down");
+    let highlights;
+    let currentHighlightIndex = -1;
+    
+    function removeHighlights() {
+      const highlightedElements = contentElement.querySelectorAll('.highlight');
+      highlightedElements.forEach(element => {  element.replaceWith(document.createTextNode(element.textContent));
+      });
+      currentHighlightIndex = -1;
+    }
+
+    searchInput.addEventListener('input', () => {
+        removeHighlights(); // 기존 하이라이트 제거
+        let contentHtml = contentElement.innerHTML;
+        const searchValue = searchInput.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // 특수 문자 이스케이프
+        
+      
+        if (searchValue === '') {
+            contentElement.innerHTML = contentHtml; // 검색어가 빈 문자열일 경우 하이라이트 제거
+            searchResult.innerHTML='';
+            return;
+        }
+
+        const regex = new RegExp(`(${searchValue})`, 'gi');
+        
+        contentHtml = contentHtml.replace(regex, `<span class='highlight'>$1</span>`);
+        contentElement.innerHTML = contentHtml; 
+        highlights = contentElement.querySelectorAll('.highlight');
+        searchResult.innerHTML = `${highlights.length}건`;
+    });
+    
+    searchDown.addEventListener('click',()=>{
+      highlightNext();
+    })
+    
+    searchUp.addEventListener("click",()=>{
+      highlightPrev();
+    })
+    
+    
+    
+    function highlightNext() {
+      if (highlights.length === 0) {
+        currentHighlightIndex = -1;
+        return;
+      }
+
+      if (currentHighlightIndex >= 0) {
+          highlights[currentHighlightIndex].classList.remove('active');
+      }
+      currentHighlightIndex = (currentHighlightIndex + 1) % highlights.length;
+      searchResult.innerHTML=`${currentHighlightIndex+1}/${highlights.length}`;
+      highlights[currentHighlightIndex].classList.add('active');
+      highlights[currentHighlightIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    
+    function highlightPrev() {
+      if (highlights.length === 0) {
+        currentHighlightIndex = -1;
+        return;
+      }
+
+      if (currentHighlightIndex >= 0) {
+          highlights[currentHighlightIndex].classList.remove('active');
+      }
+      currentHighlightIndex = currentHighlightIndex>0
+      ?(currentHighlightIndex - 1) % highlights.length : highlights.length-1;
+      searchResult.innerHTML=`${currentHighlightIndex + 1}/${highlights.length}`;
+      highlights[currentHighlightIndex].classList.add('active');
+      highlights[currentHighlightIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    const searchBtn = document.querySelector('.search-btn');
+    searchBtn.addEventListener('click',()=>{
+      const search = document.querySelector(".search");
+      search.classList.toggle('show-search');
+    })
+    /*2024.9.21 update end*/
+  </script>
+
+
+
+
 </body>
 
 </html>

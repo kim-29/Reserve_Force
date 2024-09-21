@@ -40,7 +40,7 @@
     .title {
       font-size: var(--font3);
       text-align: center;
-      margin-top: 10rem; /*2024. 9.20 add update point*/
+      padding-top: 20rem;/*2024. 9.21 add update point*/
     }
 
     div {
@@ -68,74 +68,71 @@
       margin-top: 5rem;
       font-weight: bold;
     }
-    /*20224 09.20 수정 add start*/
+    /*20224 09.21 수정 start*/
     .util {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      display: flex;
-      column-gap: 2rem;
+      margin-top: 0;
+      text-align: right;
       font-size: 3rem;
-      align-items: center;
-      background-color: inherit;
-      margin: 0;
-      padding: 0 2rem;
+      position: fixed;
+      border-radius: 5rem;
+      top: 0;
+      right: 0;
+      background-color: var(--dark);
     }
-
+    
+    .search-btn,
     .mode-btn,
     .font-btn {
       cursor: pointer;
+      padding: 3rem;
+      display: inline-block;
     }
     .search{
+      font-size: 4rem;
+      position: fixed;
+      top: -10rem;
+      left: 0;
       width: 100%;
-      position: relative;
-      margin: 0;
+      transition: top .3s ease;
     }
 
-    .search-result,.search-up, .search-down{
-      font-size: 2rem;
-      color: black;
-    }
     .search-result, .search-up, .search-down{
-      background-color: transparent;
-      outline: none;
-      border: none;
+      cursor: pointer;
+      color: black;
       position: absolute;
-      top: 1.5rem; 
+      top: 1rem;
     }
-
 
     .search-up{
-      right: 1rem;
-      cursor: pointer;
-      font-size: 5rem;
+      right: 3rem;
     }
     .search-down{
-      right: 6rem;
-      cursor: pointer;
-      font-size: 5rem;
+      right:9rem;
     }
     .search-result{
-      right: 12rem;
-      top: 2rem;
+      right:15rem;
+    }
+    
+    .search-input{
+      border-radius: 1rem;
+      width: 100%;
+      padding: 2rem;
       font-size: 3rem;
     }
-
-    .search-input{
-      height: 8rem;      
-      width: 100%;
-      border-radius: 1rem;
-      font-size: 4rem;
+    .show-search{
+      top: 10rem;
     }
+    
+    
     .highlight {
-      background-color: orange;
-      color: black;
+      background-color: green;
+      
     }
     .highlight.active{
       background-color: red;
+      
     }
-    /*20224 09.20 수정 add end*/
+    /*20224 09.21 수정 end*/
 
     .dark-mode {
       --dark: white;
@@ -175,7 +172,9 @@
       margin: 0 4rem;
       text-align: left;
     }
-
+    .nav-list li{
+      margin-top: 2rem;
+    }
     .nav-link {
       color: white;
       text-decoration: none;
@@ -334,24 +333,25 @@
       <li><a href="#list138" class="nav-link">육성규칙) 제20조(추진실적의 보고 등) </a></li>
     </ul>
   </div>
-  <!-- 2024.9.20 update -->
-  <!-- 2024.9.20 update add start -->
+  
+  <!-- 2024.9.21 update start-->
+  <div class="search">
+    <form action="">
+      <label for="search-input"></label>
+      <input class="search-input" type="text" id="search-input" placeholder="검색어를 입력하세요">
+    </form>
+    <i class="ri-arrow-up-s-line search-up"></i>
+    <i class="ri-arrow-down-s-line search-down"></i>
+    <p class="search-result"></p>
+  </div>
+
   <div class="util">
-    <div class="search">
-      <input class="search-input" type="text">
-      <button class="search-up">
-        <i class="ri-arrow-up-s-line"></i>
-      </button>
-      <button class="search-down">
-        <i class="ri-arrow-down-s-line"></i>
-      </button>
-      <p class="search-result"></p>
-    </div>
+    <i class="ri-search-line search-btn"></i>
     <i class="ri-moon-line mode-btn"></i>
     <i class="ri-font-size-2 font-btn"></i>
   </div>
   
-  <!-- 2024.9.20 update add end -->
+  <!-- 2024.9.21 update end -->
   <div id="content">
     <h1 class="title">예비군법 </h1>
     <div class="act" id="list1">법) 제1조(목적) </div>
@@ -1258,7 +1258,7 @@
     
     
     
-  /*search 2024.09.20 update add*/ 
+  /*search 2024.09.21 update add start*/ 
     const contentElement = document.getElementById('content');
     const searchInput = document.querySelector('.search-input');
     const searchResult = document.querySelector('.search-result');
@@ -1287,6 +1287,7 @@
         }
 
         const regex = new RegExp(`(${searchValue})`, 'gi');
+        
         contentHtml = contentHtml.replace(regex, `<span class='highlight'>$1</span>`);
         contentElement.innerHTML = contentHtml; 
         highlights = contentElement.querySelectorAll('.highlight');
@@ -1333,6 +1334,13 @@
       highlights[currentHighlightIndex].classList.add('active');
       highlights[currentHighlightIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
+
+    const searchBtn = document.querySelector('.search-btn');
+    searchBtn.addEventListener('click',()=>{
+      const search = document.querySelector(".search");
+      search.classList.toggle('show-search');
+    })
+    /*2024.9.21 update end*/
   </script>
 
 

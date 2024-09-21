@@ -1,30 +1,34 @@
 <!DOCTYPE html>
-
 <html lang="ko">
 
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
   <title>Document</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
   <style>
-    :root{
-      --font1:1rem;
-      --font1_5:1.5rem;
-      --font2:2rem;
-      --font3:3rem;
-      --font4:4rem;
-      --font5:5rem;
-      --dark:#333;
-      --white:#fff;
-      --orange:orange;
+    :root {
+      --font1: 1rem;
+      --font1_5: 1.5rem;
+      --font2: 2rem;
+      --font3: 3rem;
+      --font4: 4rem;
+      --font5: 5rem;
+      --dark: #333;
+      --white: #fff;
+      --orange: orange;
     }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
     }
-
+    /*2024. 9.20 add update start*/
+    html{
+      scroll-padding-top: 10rem;
+    }
+    /*2024. 9.20 add update end*/
     body {
       background-color: var(--dark);
       color: var(--white);
@@ -35,6 +39,7 @@
     .title {
       font-size: var(--font3);
       text-align: center;
+      padding-top: 20rem;/*2024. 9.21 add update point*/
     }
 
     div {
@@ -44,7 +49,8 @@
     .act,
     .decree,
     .rule,
-    .rule2,.jo {
+    .rule2,
+    .jo {
       color: var(--orange);
       margin-top: 2rem;
       font-weight: bolder;
@@ -61,40 +67,192 @@
       margin-top: 5rem;
       font-weight: bold;
     }
-    .util{
-      font-size: var(--font1_5);
-      text-align: right;  
+    /*20224 09.21 수정 start*/
+    .util {
+      margin-top: 0;
+      text-align: right;
+      font-size: 3rem;
+      position: fixed;
+      border-radius: 5rem;
+      top: 0;
+      right: 0;
+      background-color: var(--dark);
     }
-    .mode-btn, .font-btn{
+    
+    .search-btn,
+    .mode-btn,
+    .font-btn {
       cursor: pointer;
-      margin-right: 2rem;
+      padding: 3rem;
+      display: inline-block;
     }
-    .dark-mode{
-      --dark:white;
-      --white:black;
-      --orange:darkblue;
+    .search{
+      font-size: 4rem;
+      position: fixed;
+      top: -10rem;
+      left: 0;
+      width: 100%;
+      transition: top .3s ease;
     }
-    .large-font{
-      --font1:4rem;
-      --font1_5:4.5rem;
-      --font2:5rem;
-      --font3:6rem;
-      --font4:6rem;
-      --font5:6rem;
+
+    .search-result, .search-up, .search-down{
+      cursor: pointer;
+      color: black;
+      position: absolute;
+      top: 1rem;
     }
+
+    .search-up{
+      right: 3rem;
+    }
+    .search-down{
+      right:9rem;
+    }
+    .search-result{
+      right:15rem;
+    }
+    
+    .search-input{
+      border-radius: 1rem;
+      width: 100%;
+      padding: 2rem;
+      font-size: 3rem;
+    }
+    .show-search{
+      top: 10rem;
+    }
+    
+    
+    .highlight {
+      background-color: green;
+      
+    }
+    .highlight.active{
+      background-color: red;
+      
+    }
+    /*20224 09.21 수정 end*/
+
+    .dark-mode {
+      --dark: white;
+      --white: black;
+      --orange: darkblue;
+    }
+
+    .large-font {
+      --font1: 4rem;
+      --font1_5: 4.5rem;
+      --font2: 5rem;
+      --font3: 6rem;
+      --font4: 6rem;
+      --font5: 6rem;
+    }
+
+    /* 2024.9.20 update */
+    .nav-menu {
+      padding: 10rem 0 5rem 0;
+      position: fixed;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      right: -100%;
+      text-align: center;
+      margin: 0;
+      overflow: auto;
+      background-color: inherit;
+      transition: right .3s ease;
+    }
+
+    .nav-menu::-webkit-scrollbar {
+      display: none;
+    }
+
+    .nav-list {
+      margin: 0 4rem;
+      text-align: left;
+    }
+    .nav-list li{
+      margin-top: 2rem;
+    }
+    .nav-link {
+      color: white;
+      text-decoration: none;
+    }
+
+    .show-menu {
+      right: 0;
+    }
+
+    /* 2024.9.20 update */
+
   </style>
 </head>
 
 <body>
+  <!-- 2024.9.20 update -->
+  <div class="nav-menu">
+    <ul class="nav-list">
+      <li><a href="#list1" class="nav-link">제1조 (목적)</a></li>
+      <li><a href="#list2" class="nav-link">제2조 (정의)</a></li>
+      <li><a href="#list3" class="nav-link">제3조 (적용범위)</a></li>
+      <li><a href="#list4" class="nav-link">제4조 (예비군훈련의 목적)</a></li>
+      <li><a href="#list5" class="nav-link">제5조 (예비군훈련의 중점)</a></li>
+      <li><a href="#list6" class="nav-link">제6조 (예비군훈련 체계)</a></li>
+      <li><a href="#list7" class="nav-link">제7조 (각 관의 임무)</a></li>
+      <li><a href="#list8" class="nav-link">제8조 (훈련대상 및 시간)</a></li>
+      <li><a href="#list9" class="nav-link">제9조 (훈련시기) </a></li>
+      <li><a href="#list10" class="nav-link">제10조 (소집방법)</a></li>
+      <li><a href="#list11" class="nav-link">제11조 (훈련방법) </a></li>
+      <li><a href="#list12" class="nav-link">제12조 (공통과목)</a></li>
+      <li><a href="#list13" class="nav-link">제13조 (동원예비군훈련)</a></li>
+      <li><a href="#list14" class="nav-link"> 제14조 (지역예비군훈련)</a></li>
+      <li><a href="#list15" class="nav-link"> 제15조 (간부교육) </a></li>
+      <li><a href="#list16" class="nav-link"> 제16조 (기타훈련) </a></li>
+      <li><a href="#list17" class="nav-link">제17조 (훈련관리)</a></li>
+      <li><a href="#list18" class="nav-link">제18조 (훈련 후 행정처리)</a></li>
+      <li><a href="#list19" class="nav-link">제19조 (훈련일정 자율선택)</a></li>
+      <li><a href="#list20" class="nav-link">제20조 (전국단위훈련) </a></li>
+      <li><a href="#list21" class="nav-link">제21조 (휴일예비군훈련) </a></li>
+      <li><a href="#list22" class="nav-link">제22조 (훈련일정조정 등의 승인권한) </a></li>
+      <li><a href="#list23" class="nav-link">제23조 (예비군훈련 보류)</a></li>
+      <li><a href="#list24" class="nav-link">제24조 (예비군훈련 연기)</a></li>
+      <li><a href="#list25" class="nav-link">제25조 (활용 및 관리)</a></li>
+      <li><a href="#list26" class="nav-link">제26조 (교육훈련 교보재 및 탄약)</a></li>
+      <li><a href="#list27" class="nav-link">제27조 (훈련시설 및 예산)</a></li>
+      <li><a href="#list28" class="nav-link">제28조(급식지원 기준) </a></li>
+      <li><a href="#list29" class="nav-link">제29조(보상·치료 및 안전 활동)</a></li>
+      <li><a href="#list30" class="nav-link">제30조 (훈련기강 확립)</a></li>
+      <li><a href="#list31" class="nav-link">제31조 (기타)</a></li>
+      <li><a href="#list32" class="nav-link">제32조(과태료) </a></li>
+      <li><a href="#list33" class="nav-link">제33조 (재검토 기간)</a></li>
+    </ul>
+  </div>
+  <!-- 2024.9.20 update -->
+  <!-- 2024.9.21 update start-->
+  <div class="search">
+    <form action="">
+      <label for="search-input"></label>
+      <input class="search-input" type="text" id="search-input" placeholder="검색어를 입력하세요">
+    </form>
+    <i class="ri-arrow-up-s-line search-up"></i>
+    <i class="ri-arrow-down-s-line search-down"></i>
+    <p class="search-result"></p>
+  </div>
+
   <div class="util">
+    <i class="ri-search-line search-btn"></i>
     <i class="ri-moon-line mode-btn"></i>
     <i class="ri-font-size-2 font-btn"></i>
   </div>
+  
+  <!-- 2024.9.21 update end -->
   <div id="content">
     <h1 class="title">『예비군 교육훈련 훈령』</h1>
     <div class="jang">제1장 총 칙</div>
-    <div class="jo">제1조 (목적) 이 훈령은 「병역법」 제6장 제2절과 「예비군법」제6조에 명시된 예비군 교육훈련을 체계적으로 관리하기 위하여 예비군 교육훈련과 관련된 사항을 규정함을 목적으로 한다.</div>
-    <div class="jo">제2조 (정의) 이 훈령에서 사용하는 용어의 뜻은 다음 각 호와 같다.</div>
+    <div class="jo" id="list1">제1조 (목적)</div>
+    <div>이 훈령은 「병역법」 제6장 제2절과 「예비군법」제6조에 명시된 예비군 교육훈련을 체계적으로 관리하기 위하여 예비군 교육훈련과 관련된 사항을 규정함을 목적으로 한다.</div>
+    <div class="jo" id="list2">제2조 (정의)</div>
+    <div> 이 훈령에서 사용하는 용어의 뜻은 다음 각 호와 같다.</div>
     <div class="ho"> 1. “예비군 교육훈련”이란 「병역법」과 「예비군법」에 따라 예비군으로 편성된 자에 대한 교육훈련과 예비군 관련 업무 종사자를 대상으로 실시하는 간부교육을 말한다.</div>
     <div class="ho"> 2. “동원예비군훈련”이란 「병역법」에 의한 동원지정자를 대상으로 소집부대에서 2박 3일 실시하는 동원훈련과 연차이내 자원 중 동원미지정자 또는 동원훈련을 미이수한 자를 대상으로 실시하는 동미참훈련을 말한다. 이 중 동미참훈련은 2박 3일 훈련과 4일(32시간, 1일 8H) 훈련으로 구분된다.</div>
     <div class="ho"> 3. “지역예비군훈련”이란 「예비군법」에 따른 임무수행을 위한 필수과목(제)을 실시하는 기본훈련과 거주지나 직장일대에서 실시하는 작계훈련을 말한다.</div>
@@ -112,20 +270,25 @@
     <div class="ho"> 15. “소집부대”란 병력동원에 소집된 자가 동원 지정된 보직에 따라 임무를 수행할 부대로서 충무3700 국방부 집행계획 등에 열거된 단위부대를 말하며, 통상 전투부대는 대대급, 전투근무지원부대는 중대급을 말한다. </div>
     <div class="ho"> 16. “원격교육”이란 인터넷 등 여러 기술을 이용하여 시간적ㆍ공간적 원격성을 전제로 실시되는 교육을 말한다.</div>
     <div class="ho"> 17. “비상근예비군”이란 예비군법 제3조의3(비상근 예비군 제도)에 의거, 예비역인 장교, 준사관, 부사관 및 병에 해당하는 사람 중에서 선발하여, 평시에 일정기간 소집하는 예비군을 말한다. 비상근예비군은 연간 30일 이내 소집하는 단기 비상근예비군과 연간 30일 초과 180일 이내 소집하는 장기 비상근예비군으로 구분된다.</div>
-    <div class="jo">제3조 (적용범위) 이 훈령은 예비군 교육훈련(이하 “예비군훈련”이라 한다)을 담당하는 부대(부서를 포함한다. 이하 같다) 및 관련 기관에 적용한다.</div>
+    <div class="jo" id="list3">제3조 (적용범위)</div>
+    <div> 이 훈령은 예비군 교육훈련(이하 “예비군훈련”이라 한다)을 담당하는 부대(부서를 포함한다. 이하 같다) 및 관련 기관에 적용한다.</div>
     <div class="jang">제2장 예비군훈련 목적 및 중점</div>
-    <div class="jo">제4조 (예비군훈련의 목적) 예비군훈련은 유사시 개인 및 부대의 임무에 따라 동원절차 숙지 및 동원 후 전투력 발휘 보장과 임무수행을 위한 능력 구비를 위하여 실시한다. </div>
-    <div class="jo">제5조 (예비군훈련의 중점) 예비군훈련은 신분과 임무에 따라 다음 각 호에 중점을 두고 실시한다.</div>
+    <div class="jo" id="list4">제4조 (예비군훈련의 목적)</div>
+    <div> 예비군훈련은 유사시 개인 및 부대의 임무에 따라 동원절차 숙지 및 동원 후 전투력 발휘 보장과 임무수행을 위한 능력 구비를 위하여 실시한다. </div>
+    <div class="jo" id="list5">제5조 (예비군훈련의 중점)</div>
+    <div> 예비군훈련은 신분과 임무에 따라 다음 각 호에 중점을 두고 실시한다.</div>
     <div class="ho"> 1. 신분에 따른 예비군훈련의 중점은 각 군 참모총장이 정하여 시행한다. </div>
     <div class="ho"> 2. 임무에 따른 예비군훈련의 중점은 다음 각 목과 같다.</div>
     <div> 가. 동원예비군훈련은 전시 부대 증·창설 절차를 숙달시키고, 병과 및 주특기별 임무수행능력 향상 등을 위한 훈련을 실시한다.</div>
     <div> 나. 지역예비군훈련은 기본전투기술 숙달 및 동원태세 확립과 지역방위작전수행능력 배양을 위한 훈련을 실시한다.</div>
     <div class="ho"> 3. 간부교육은 예비군에 대한 전투지휘능력과 교육훈련 지도능력 그리고 직책에 따른 임무수행능력 배양 등을 위한 교육을 실시한다.</div>
     <div class="jang">제3장 예비군훈련 체계 및 임무</div>
-    <div class="jo">제6조 (예비군훈련 체계) 예비군훈련의 체계는 다음 각 호와 같다.</div>
+    <div class="jo" id="list6">제6조 (예비군훈련 체계)</div>
+    <div> 예비군훈련의 체계는 다음 각 호와 같다.</div>
     <div class="ho"> 1. 예비군훈련은 별표 1의 체계도에 의하여 수임군부대장 책임 하에 시행하고, 각 군 참모총장 및 중간제대 지휘관은 시행에 대한 지휘·감독, 조정·통제, 평가 등을 실시하며, 간부교육 중 학교교육은 각 군 참모총장이 통제하여 실시한다.</div>
     <div class="ho"> 2. 예비군훈련의 관련 문서는 국방정책의 구현에 중점을 두고 각급 제대별로 해당 부분을 작성하며, 관련 법령 및 규칙은 별표2와 같다. </div>
-    <div class="jo">제7조 (각 관의 임무) 각급 제대의 임무는 다음 각 호와 같다.</div>
+    <div class="jo" id="list7">제7조 (각 관의 임무)</div>
+    <div> 각급 제대의 임무는 다음 각 호와 같다.</div>
     <div class="ho"> 1. 국방부장관은 예비군훈련에 관한 기본정책을 수립하고, 「예비군 교육훈련 훈령」을 작성·하달하며, 그 시행에 대한 조정, 통제, 평가 등을 실시한다.</div>
     <div class="ho"> 2. 각 군 참모총장은 「예비군 교육훈련 훈령」을 기초로 각 군 규정 또는 지시를 작성하여 국방부장관의 승인을 득한 후 예하부대에 하달하고, 그 시행에 대한 조정, 통제, 평가 등을 실시한다.</div>
     <div class="ho"> 3. 작전사령관은 중간 지휘관리 제대의 장으로서 수임군부대의 예비군훈련에 관한 업무를 조정, 통제, 평가 한다. </div>
@@ -133,15 +296,18 @@
     <div class="ho"> 5. 국방부 직할부대장은 「예비군 교육훈련 훈령」을 기초로 부대별 임무와 여건을 고려 예하부대 훈련의 조정․통제․시행․평가 등에 관한 사항을 부대훈련지시에 반영하여 실시한다.</div>
     <div class="jang">제4장 예비군훈련 지침</div>
     <div class="jul">제1절 기본지침</div>
-    <div class="jo">제8조 (훈련대상 및 시간) 훈련대상 및 시간은 다음 각 호와 같다.</div>
+    <div class="jo" id="list8">제8조 (훈련대상 및 시간)</div>
+    <div> 훈련대상 및 시간은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 훈련의 대상은 예비군으로 편성된 자로 간부는 계급별 연령정년까지, 병은 8년차까지로 한다.</div>
     <div class="ho"> 2. 훈련시간은 「예비군법」제6조 및「병역법」제49조에 따른 훈련 기간에 실시하고, 그 세부사항은 다음과 같다.</div>
     <div class="ho"> 3. 재복무 후 전역한 자는 재복무 이전 이수한 예비군 훈련과 관계없이 전역한 다음 해에 신분에 맞는 1년차 훈련부터 부과한다. 다만, 아래 각 목에 해당하는 자는 재복무 이전 이수한 예비군 훈련을 합산 적용한다.</div>
     <div> 가. 동일한 신분으로 재복무한 자</div>
     <div> 나. '11. 12. 31 이전 상이한 신분으로 재입대한 자</div>
     <div class="ho"> 4. 단기 비상근예비군의 소집기간은 연간 30일 이내로 하고, 장기 비상근예비군의 소집기간은 연간 30일 초과 180일 이내로 한다.</div>
-    <div class="jo">제9조 (훈련시기) 예비군훈련은 부대여건과 훈련 대상을 고려하여 연중 훈련을 실시하되 가급적 혹서기, 연휴기간, 대학수능일, 근로자의 날 등은 피한다. 다만,「예비군법」제6조에 따라 공직 선거기간에는 훈련을 실시하지 않는다. </div>
-    <div class="jo">제10조 (소집방법) 예비군훈련을 위한 소집 방법은 다음 각 호와 같다.</div>
+    <div class="jo" id="list9">제9조 (훈련시기) </div>
+    <div>예비군훈련은 부대여건과 훈련 대상을 고려하여 연중 훈련을 실시하되 가급적 혹서기, 연휴기간, 대학수능일, 근로자의 날 등은 피한다. 다만,「예비군법」제6조에 따라 공직 선거기간에는 훈련을 실시하지 않는다. </div>
+    <div class="jo" id="list10">제10조 (소집방법)</div>
+    <div> 예비군훈련을 위한 소집 방법은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 동원지정자의 병력동원훈련소집은 「병역법」 제50조에 따른 병력동원훈련 소집통지서나「병역법 시행령」제3조의 4에 따른 전자송달에 의하여 소집할 수 있다. 다만, 비상근예비군의 병력동원훈련을 제외한 훈련소집은 각 군에서 구체화하여 시행한다.</div>
     <div class="ho"> 2. 동미참훈련, 비상근 예비군훈련, 기본훈련 및 작계훈련 소집은 모바일 송달, 우편, 언론매체, 예비군홈페이지(예비군앱), 그 밖의 수단을 이용하거나「예비군법」제6조의 2에 따른 훈련소집통지서로 소집한다.</div>
     <div class="ho"> 3. 지역예비군의 불시훈련 및 점검 시에는「예비군법」제6조의2제1항 및 「예비군법 시행령」제16조에 따라 전화 또는 (방문)통보하여 소집한다.</div>
@@ -169,7 +335,8 @@
     <div> 라. 통지서 전달수단 및 훈련 행정정리는 개인의 훈련차수에 맞게 적용한다. </div>
     <div> 마. 예비군 지휘관(자)은 소집일 7일 전까지(전달일 미포함) 수령대상자에게 훈련소집통지서를 전달하여야 한다.</div>
     <div> 바. 모바일 송달로 소집통지하였을 경우소집일 16일 전(송달일 포함)까지 수령대상자가 훈련소집통지서를 수신하지 않았다면, 소집일 15일 전(송달일 포함)부터 방문통보, 이메일, 일반우편, 등기우편, FAX 등의 수단으로 재통지한다.</div>
-    <div class="jo">제11조 (훈련방법) 예비군훈련 방법은 다음 각 호와 같다.</div>
+    <div class="jo" id="list11">제11조 (훈련방법) </div>
+    <div>예비군훈련 방법은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 전･평시 개인 및 부대의 임무에 부합된 훈련을 실시하되, 세부과제는 각 군 참모총장이 선정하여 시행한다.</div>
     <div class="ho"> 2. 성과위주 훈련</div>
     <div> 가. 실전적인 예비군훈련과 훈련의 성과를 극대화 하고, 예비군의 자발적인 훈련참여를 유도하기 위해 측정식 합격제 훈련 및 과학화 장비 등을 활용한 훈련을 실시할 수 있다.</div>
@@ -187,7 +354,8 @@
     <div> 3) 동미참훈련의 주특기 훈련은 자원관리부대에 통합 실시하되, 훈련여건상 자원관리부대에 통합이 불가능한 경우는 보병특기에 통합하여 직장 자체적으로 실시할 수 있다.</div>
     <div class="ho"> 5. 예비군훈련의 전부(감염병 등 특수한 상황이 발생한 경우) 또는 일부를 원격교육으로 시행할 경우, 원격교육 시행여부, 교육대상, 과목 및 시간은 국방부 지침으로 정한다.</div>
     <div class="jul">제2절 유형별 훈련 지침</div>
-    <div class="jo">제12조 (공통과목) 안보교육과 개인화기 사격은 공통과목으로 전 부대가 실시하되, 세부내용은 아래 각 호와 같다. </div>
+    <div class="jo" id="list12">제12조 (공통과목)</div>
+    <div> 안보교육과 개인화기 사격은 공통과목으로 전 부대가 실시하되, 세부내용은 아래 각 호와 같다. </div>
     <div class="ho"> 1. 안보교육은 투철한 국가 안보관과 대적관을 확립하고, 예비군의 역할과 사명감을 고양하는데 중점을 두고 정치적 중립을 유지하여 실시하며 전문 강사 교육과 지휘관 교육으로 다음 각 목과 같이 구분한다. 다만, 과학화예비군훈련장의 안보교육은 각 군 참모총장이 세부방법 등을 정하여 시행한다.</div>
     <div> 가. 전문 강사 교육은 국방부에서 선정한 단체의 강사가 국방부 표준 교안을 활용하여 교육하는 것을 말한다. 전문 강사 교육은 해당연도 예산범위 내에서 계획에 의해 지원받을 수 있으며, 전문 강사 안보교육시 훈련부대 지휘관이 지정한 관계관은 전문 강사의 강의내용이 불필요한 오해나 정치적인 쟁점화가 되지 않는지 교육장에 입회하여 확인한다. 전문 강사가 지원되지 않은 경우에는 훈련부대 지휘관이 교육한다.</div>
     <div> 나. 지휘관 교육은 국방부 통제 하 각 군 지침에 따라 부대 및 지 역별 특성에 맞는 교육을 실시한다.</div>
@@ -219,7 +387,8 @@
     <div> 4) 사격 전․후에는 반드시 약실검사를 통해, 잔탄 및 이물질 유무를확인한다.</div>
     <div> 5) 사격 시 군의관, 응급구조사(의무부대 부사관), 예비역군의장교, 공중보건의사 및 병역판정검사 전담의사 출신 보충역 중에서 활용 가능한 자를 배치하여 운용한다. 다만, 상기 인원 활용이 제한될 시 응급처치능력이 있는 인원(안전관리과정 등의 교육을 받은 예비군지휘관 등)을 활용할 수 있다.</div>
     <div> 6) 그 밖의 예비군사격장 관련 안전대책은 부대별 훈련장 여건 등을 고려하여 수임군부대장 또는 훈련담당 부대장 책임 하 세부 안전대책을 강구한다. </div>
-    <div class="jo">제13조 (동원예비군훈련) 동원예비군훈련은 다음 각 호와 같이 실시한다.</div>
+    <div class="jo" id="list13">제13조 (동원예비군훈련)</div>
+    <div> 동원예비군훈련은 다음 각 호와 같이 실시한다.</div>
     <div class="ho"> 1. 동원훈련</div>
     <div> 가. 동원훈련은 긴급단계 및 지속 4단계의 증･창설부대 동원지 정자를 대상으로 소집부대장 책임 하에 전시 완편 하 건제 유지훈련을 실시한다.(다만, 해병 6여단 및 연평부대는 부대 장 책임 하에실시할 수 있다.)</div>
     <div> 1) 장교(준사관) 및 부사관 : 예비군 복무 1～6년차 중 동원지정자</div>
@@ -278,7 +447,8 @@
     <div> 2) 육군 및 해군 병</div>
     <div> 가) 훈련장 수용능력, 가용 교관 및 조교, 통제 능력 등을 고려 하여 학급을 편성하되, 소수인원 병과는 보병에 통합훈련이 가능하다.</div>
     <div> 나) 병과 훈련은 병과부대로 입소시켜 훈련하거나 훈련시설 및 소집여건 제한 시는 자원관리부대에서 실시하고, 병과부대에서 교관조를 지원한다. </div>
-    <div class="jo"> 제14조 (지역예비군훈련) 지역예비군훈련은 다음 각 호와 같이 실시한다.</div>
+    <div class="jo" id="list14"> 제14조 (지역예비군훈련)</div>
+    <div> 지역예비군훈련은 다음 각 호와 같이 실시한다.</div>
     <div class="ho"> 1. 기본훈련은 개인 기본전투기술 숙달에 중점을 두고 5∼6년차 예비군을 대상으로 안보교육 및 사격과 기타과제(수임군부대장 판단)를 실시하되, 학생 보류자(대학생)는 전시임무에 부합된 안보교육, 사격, 전술훈련과제 위주로 실시한다. </div>
     <div class="ho"> 2. 작계훈련은 지역방위작전수행능력 배양에 중점을 두고 다음 각 목과 같이 실시한다. </div>
     <div> 가. 수임군부대장(작전통제부대장) 책임 하에 5∼6년차를 대상으로 전반기와 후반기로 구분하여 연 2회 각 6시간씩 작계지역에서 실시한다.</div>
@@ -292,7 +462,8 @@
     <div> 사. 동원태세 점검을 위하여 수임군부대장은 불시 훈련을 계획하여 실시할 수 있으며, 전화 또는 기타 방법으로 예비군대원을 소집한다.</div>
     <div> 아. 평시 작전활동의 일환으로 필요하다고 판단될 때에는 각 군 총장 및 작전사령관 책임 하에 작전환경을 고려하여 해안경 계, 내륙 취약지 수색정찰 등으로 작계훈련을 대체할 수 있다.</div>
     <div class="ho"> 3. 감시정찰반이 편성된 예비군부대는 각 군 통제 하에 훈련과제를 편성하여 숙달한다.</div>
-    <div class="jo"> 제15조 (간부교육) 간부교육은 대상 및 방법에 따라 부대교육과 학교교육으로 구분하여 실시한다.</div>
+    <div class="jo" id="list15"> 제15조 (간부교육) </div>
+    <div>간부교육은 대상 및 방법에 따라 부대교육과 학교교육으로 구분하여 실시한다.</div>
     <div class="ho"> 1. 부대교육은 동원실무자, 예비군지휘관, 행정담당군무원, 소대장을 대상으로 다음 각 호와 같이 소집교육, 수시교육, 기회교육 등의 방법으로 실시한다.</div>
     <div> 가. 소집교육은 직책에 따라 직무교육반, 소대장반, 중대장반, 대대장반 등으로 학급을 편성하여 군단장급 이하 부대장의 통제 하에 훈련개시 전에 실시한다. </div>
     <div> 나. 수시 및 기회교육은 각급제대 지휘관이 필요하다고 인정될 때 소집, 방문 등의 방법으로 실시한다. </div>
@@ -300,7 +471,8 @@
     <div> 가. 부임교육은 신규 예비전력관리 업무담당자를 대상으로 동원 및 예비군업무, 예비군 훈련지도 및 지휘기법 등에 중점을 두고 실시한다.</div>
     <div> 나. 보수교육은 예비군업무를 수행하는 예비전력관리 군무원과 직장예비군지휘관을 대상으로 4년 주기로 교육을 편성하고, 해당 업무수행능력을 배양하기 위하여 실시한다.</div>
     <div> 다. 직무교육은 현역간부 및 예비군 지휘관, 행정담당군무원을 대상으로 동원 및 예비군 업무에 대한 이해를 증진하고 업무수행 능력을 함양하기 위하여 실시한다.</div>
-    <div class="jo"> 제16조 (기타훈련) 기타훈련은 다음 각 호와 같이 실시한다.</div>
+    <div class="jo" id="list16"> 제16조 (기타훈련) </div>
+    <div>기타훈련은 다음 각 호와 같이 실시한다.</div>
     <div class="ho"> 1. 지휘요원훈련</div>
     <div> 가. 지휘요원 소집교육은 전·후반기 구분하여 작계훈련 전에 실시한다. </div>
     <div> 나. 지역대 참모, 부중대장 및 소대장은 임명시기와 상관없이 연간 20시간(전․후반기 소집교육 각 4시간과 전․후반기 작계훈련 각 6시간)을 부과하되, 임명 전 이수한 훈련시간은 연간 훈련시간에서 공제하고, 세부훈련 유형은 부대여건을 고려하여 실시한다. </div>
@@ -331,7 +503,8 @@
     <div> 다.비상근예비군의 1일 훈련시간은 8시간으로 한다. 다만, 입영부대 이상 제대에서 통제하여 실시하는 집체훈련의 경우에는 장관급 지휘관 승인하 1일 훈련시간 8시간을 초과하여 실시할 수 있다.</div>
     <div> 라.그 밖의 세부지침은 각 군 참모총장 및 비상근예비군을 운용하는 국방부 직할부대의 장(이하 ‘국방부 직할부대장’이라고 한다)이 정하여 시행한다.</div>
     <div class="jang">제5장 예비군훈련 관리</div>
-    <div class="jo">제17조 (훈련관리) 예비군훈련의 관리절차에는 계획, 준비, 실시 및 평가가 포함되며, 평가결과는 구체적으로 차후 훈련계획에 반영되어야 한다.</div>
+    <div class="jo" id="list17">제17조 (훈련관리)</div>
+    <div> 예비군훈련의 관리절차에는 계획, 준비, 실시 및 평가가 포함되며, 평가결과는 구체적으로 차후 훈련계획에 반영되어야 한다.</div>
     <div class="ho"> 1. 훈련계획과 관련된 업무는 다음 각 목과 같다.</div>
     <div> 가.국방부장관은 국방정책 목적의 달성을 위해 예비군훈련 정책을 구체화하여 모든 예비군훈련 활동간 시행·적용될 수 있도록 「예비군 교육훈련 훈령」을 하달한다.</div>
     <div> 나.각 군 참모총장은 「예비군법 시행규칙」 제16조의 규정에 따라 다음해의 예비군 교육훈련계획과 예비군 교육훈련 대상 인원을 매년 12월 31일까지 국방부 장관의 승인을 얻어 작전사 및 수임군부대에 하달하며, 「병역법 시행령」 제100조 제1항의 규정에 따라 매년 10월 31일까지 다음해의 병력동원훈련 운영계획서를 국방부장관에게 제출하여 승인을 받아야 한다.</div>
@@ -344,7 +517,8 @@
     <div class="ho"> 4. 훈련평가와 관련된 업무는 다음 각 목과 같다.</div>
     <div> 가. 예비군훈련에 관한 기본정책 및 훈련지침 수립에 필요한 자료 수집과 성과측정을 위하여 각 부대 지휘관은 예비군훈련 내용, 방법 및 성과 등에 관하여 정기 또는 수시로 평가·분석 한다.</div>
     <div> 나. 각 군 참모총장은 「예비군법 시행규칙」 제16조 제2항의 규정에 따라 연간 예비군교육훈련 실시결과를 매년 12월 31일까지 국방부장관에게 보고하여야 한다.</div>
-    <div class="jo">제18조 (훈련 후 행정처리) 예비군훈련 후 행정처리는 다음 각 호와 같다. </div>
+    <div class="jo" id="list18">제18조 (훈련 후 행정처리)</div>
+    <div> 예비군훈련 후 행정처리는 다음 각 호와 같다. </div>
     <div class="ho"> 1. 동원훈련</div>
     <div> 가. 동원훈련 인도인접 간 소집부대와 관할 지방병무청은 인도인접서에 의해 인도인접 결과(입영, 강제․정상 귀가 등)를 세부적으로 작성하여 인계인수한다. </div>
     <div> 나. 귀가자에 대한 증빙은 지방병무청 입영확인관 및 소집부대 인접관에 의해작성된 인도인접서와 병력동원훈련소집명부에 기재된 사유와 예비군이 제출한 서류로 갈음하되, 예비군이 요구할 경우 예비군 교육훈련 소집필증(별표 6 서식)으로 발급한다. </div>
@@ -400,8 +574,9 @@
     <div class="ho"> 5. 재난피해 및 재난동원관련 훈련이수 처리방법은 다음과 같다.</div>
     <div> 가.「재난 및 안전관리 기본법」 제60조에 따라 특별재난지역으로 선포된 경우에는 해당 지역 내에서 피해를 입은 예비군 중 해당 지방자치단체가 발행한 피해 사실 확인서를 제출한 예비군에 한하여 해당 연도 잔여 훈련(이월훈련제외)을 이수 처리한다. 그 밖의 훈련 이수처리에 관해서는 재난피해 상황을 고려하여 국방부 지침을 적용할 수 있다. </div>
     <div> 나. 특별재난지역에 예비군이 동원된 경우 그 동원된 시간을 훈련시간에 상응하는 것으로 보아 해당연도 잔여훈련시간, 다음 연도 훈련시간 순으로 이수처리하며, 이월훈련은 제외한다.</div>
-    <div class="jo">제19조 (훈련일정 자율선택) 예비군훈련 대상자는 사전에 인터넷 ‘예비군 홈페이지’에 공시된 예비군훈련 일정 중 본인이 희망하는 훈련기간을 선택하여 훈련을 받을 수 있다. 다만, 건제유지훈련이 요구되는 훈련인 동원훈련(동미참 입영훈련 포함)과 작전지역에서 실시하는 작계훈련에는 이를 적용하지 않는다.</div>
-    <div class="jo">제20조 (전국단위훈련) </div>
+    <div class="jo" id="list19">제19조 (훈련일정 자율선택)</div>
+    <div> 예비군훈련 대상자는 사전에 인터넷 ‘예비군 홈페이지’에 공시된 예비군훈련 일정 중 본인이 희망하는 훈련기간을 선택하여 훈련을 받을 수 있다. 다만, 건제유지훈련이 요구되는 훈련인 동원훈련(동미참 입영훈련 포함)과 작전지역에서 실시하는 작계훈련에는 이를 적용하지 않는다.</div>
+    <div class="jo" id="list20">제20조 (전국단위훈련) </div>
     <div class="hang">1항.예비군훈련 대상자는 원에 의하여 전국에 있는 예비군훈련장 중에서 훈련을 받을 수 있다. 다만, 건제유지훈련이 요구되는 동원훈련 및 작전지역 작계훈련, 동미참훈련 중 입영훈련은 제외한다. </div>
     <div class="hang"> 2항.훈련부대는 전국단위훈련 신청이 가능한 연간 훈련계획을 '예비군홈페이지ㆍ예비군앱'에 공시한다.</div>
     <div class="hang"> 3항.훈련부대는 훈련개시 30일 전 14시 전‧후 15분 이내부터 전국단위훈련 신청이 가능하도록 학급을 편성하여 훈련일정을 공시한다. </div>
@@ -409,17 +584,19 @@
     <div class="hang"> 5항.예비군은 인터넷으로 훈련실시 3일전까지 예비군 홈페이지를 통해 신청하거나 직접 원소속 또는 인근 예비군중대를 방문하 여 신청한다.(별표 7) </div>
     <div class="hang"> 6항.전국단위훈련신청 후 불참한 예비군은 소속 예비군중대에서 훈련차수를 추가 적용한 행정처리를 하여야 한다.</div>
     <div class="hang"> 7항.전국단위훈련은 인터넷 또는 방문을 통해 신청한 예비군에 한해서만 입소를 허용한다.(미 신청자 입소 불가)</div>
-    <div class="jo">제21조 (휴일예비군훈련) </div>
+    <div class="jo" id="list21">제21조 (휴일예비군훈련) </div>
     <div class="hang">1항.휴일예비군 훈련은 부대별 여건을 고려하여 수임군부대장 판단 하에 훈련부대를 지정하여 동미참훈련(4일), 기본훈련 및 앞의 유형별 보충훈련과 작계지역에서 실시하지 않는 작계훈련 3차 훈련부터 적용하여 실시한다. 훈련 편성시 가급적 토요일과 일요일을 균등하게 계획하고, 동미참훈련 신청자는 4일간 일정별 훈련모델을 적용하여 중복되지 않도록 편성한다.</div>
     <div class="hang"> 2항.훈련담당부대는 훈련개시 30일 전 14시 전‧후 15분 이내에 휴일예비군훈련 신청이 가능하도록 예비군홈페이지ㆍ예비군앱에 공지해야 하며, 홍보활동을 통해 3일 전까지 인터넷, 방문 등으로 신청을 받고, 신청 후 미참석자는 훈련차수를 추가하여 적용한다. </div>
     <div class="hang"> 3항.훈련에 참여한 현역교관, 예비군지휘관에게는 정해진 예산한도 내에서 시간 외 근무수당 또는 전투휴무를, 병(조교)은 휴가 승인권자 판단 하에 위로휴가를 실시한다.</div>
-    <div class="jo">제22조 (훈련일정조정 등의 승인권한) 재난지역선포, 악천후, 감염병 등 특별한 상황발생으로 예비군 훈련일정을 조정하거나 위임되지 않은 훈련시간을 사용하고자 할 때 그 절차 및 권한은 다음 각 호와 같다.</div>
+    <div class="jo" id="list22">제22조 (훈련일정조정 등의 승인권한) </div>
+    <div>재난지역선포, 악천후, 감염병 등 특별한 상황발생으로 예비군 훈련일정을 조정하거나 위임되지 않은 훈련시간을 사용하고자 할 때 그 절차 및 권한은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 계획된 훈련의 일정을 조정할 경우, 동원훈련은 국방부 장관의 승인 하에 시행하며, 그 밖의 훈련은 수임군부대장의 판단 하에 시행한다.</div>
     <div class="ho"> 2. 악천후, 재난발생 등으로 인해 훈련을 계속할 수 없을 때는 동원훈련은 각 군 참모총장, 동미참훈련 및 지역예비군훈련은 수임군부대장 판단 하에 훈련을 종료하고, 잔여시간은 이수한 것으로 한다.</div>
     <div class="ho"> 3. 재난 발생 및 악천후 등으로 인한 훈련조정은 24시간 이후 훈련에 대해 적용하고 조정 시 훈련 대상자에게 훈련시작 24시간 이전에 통보해야 하며 불가피하게 24시간 이내의 훈련을 조정 시에는 계획된 훈련 대상자의 1일차 훈련(8시간)은 이수한 것으로 처리하며, 24시간이후 조정된 훈련을 인지하지 못하여 훈련을 입소할 경우 4시간을 이수한 것으로 처리한다.</div>
     <div class="ho"> 4. 예비군훈련시간 중 예비시간은 국방부장관의 승인 하에 사용한다.</div>
     <div class="jang">제6장 예비군훈련 보류·연기</div>
-    <div class="jo">제23조 (예비군훈련 보류)「예비군법」제5조, 제6조 및 「예비군 조직‧편성과 운영에 관한 훈령」별표23, 별표24에 따라 동원 및 훈련이 보류되는 자(이하 "법규 및 방침보류자"라 한다.)는 다음 각 호와 같이 훈련의 일부 또는 전부를 보류하거나 연기할 수 있다.</div>
+    <div class="jo" id="list23">제23조 (예비군훈련 보류)</div>
+    <div>「예비군법」제5조, 제6조 및 「예비군 조직‧편성과 운영에 관한 훈령」별표23, 별표24에 따라 동원 및 훈련이 보류되는 자(이하 "법규 및 방침보류자"라 한다.)는 다음 각 호와 같이 훈련의 일부 또는 전부를 보류하거나 연기할 수 있다.</div>
     <div class="ho"> 1. 보류 제도</div>
     <div> 가. 동원보류와 훈련보류는 그 대상 및 기준을 달리 적용할 수 있다.</div>
     <div> 1) 동원이 보류된 자는 보류사유가 해소되는 즉시 동원 대상자로 관리한다.</div>
@@ -501,7 +678,8 @@
     <div> 나. 보류자는 법규 및 방침보류자 순으로 보류자 소대를 편성하되, 방침보류자 중 동원 가용자원은 해당부대 작전계획에 명시된 임무를 부여한다.</div>
     <div> 다. 보류자 전출시 보류원서 원본을 신 거주지 예비군부대로 송부(우편 또는 FAX)하고, 전 거주지 예비군부대는 별도의 사본을 보관하지 않는다.</div>
     <div> 라. 전입자에 대하여는 국방동원정보체계를 정리하고 관련서류를 확인하여 미 접수 시 재 송부를 요청하여야 한다.</div>
-    <div class="jo">제24조 (예비군훈련 연기) 예비군훈련의 연기 처리는 다음 각 호와 같고, 구체적인 연기사유와 사유별로 필요한 구비서류는 별표 4와 별표 4-1과 같다.</div>
+    <div class="jo" id="list24">제24조 (예비군훈련 연기)</div>
+    <div> 예비군훈련의 연기 처리는 다음 각 호와 같고, 구체적인 연기사유와 사유별로 필요한 구비서류는 별표 4와 별표 4-1과 같다.</div>
     <div class="ho"> 1. 예비군훈련 소집을 통보받은 자로서 훈련을 연기 받고자 하는 자는 연기원서를 제출하여야 한다. 다만, 그 사유가 갑자기 발생하여 연기원서를 제출할 시간적 여유가 없는 때에는 전신･전화 등의 방법으로 소집일 훈련종료 전까지 신고한 후 3일(토요일과 공휴일은 미포함) 이내에 연기원서를 제출할 수 있다. 또한 동일세대 내의 세대주나 가족 중 성년자 또는 본인의 고용주로 하여금 이를 제출할 수 있다.</div>
     <div class="ho"> 2. 연기 대상자의 연기원서는 본인이 직접 방문하여 제출하거나, 인터넷 예비군 홈페이지, FAX, 관련서류 촬영 후 전자통신망, 문자 메시지 등의 방법으로 제출할 수 있다. 다만, 해외 출국자는 국방동원정보체계상의 입⋅출국 현황으로 갈음한다.</div>
     <div class="ho"> 3. 예비군지휘관은 병무청으로부터 연동된 국방동원정보체계상의 동원훈련 연기정보를 근거로 해당기간 동안 연기 처리한다.</div>
@@ -509,11 +687,14 @@
     <div class="ho"> 5. 훈련입소 이후 연기 사유에 해당되는 경우에는 훈련부대장이 관련사실을 확인하고 정상적으로 조기퇴소 조치하며 지시불이행 등 훈련통제 불응 시 강제퇴소 조치한다.</div>
     <div class="ho"> 6. 질병으로 인한 예비군훈련 연기 시에는 진단서 또는 진료확인서 제출을 통해 질병으로 인해 계획된 예비군훈련에 참석할 수 없음을 입증할 수 있어야 한다. 다만, 질병으로 인해 예비군훈련을 2회 이상 연속해서 연기하고자 할 경우에는 진단서를 제출해야 한다.</div>
     <div class="jang">제7장 예비군훈련 지원</div>
-    <div class="jo">제25조 (활용 및 관리) 예비군훈련 지원요소에 대한 활용 및 관리는 다음과 같다.</div>
+    <div class="jo" id="list25">제25조 (활용 및 관리)</div>
+    <div> 예비군훈련 지원요소에 대한 활용 및 관리는 다음과 같다.</div>
     <div class="ho"> 1. 예비군훈련 지원요소는 각 군의 관리규정에 따라 관리한다.</div>
     <div class="ho"> 2. 각 군 참모총장 및 국직부대(기관)장은 각종 지원요소의 적극적인 활용여부와 관리 상태를 주기적으로 지도·감독한다.</div>
-    <div class="jo">제26조 (교육훈련 교보재 및 탄약) 예비군훈련 교보재 및 탄약은 각 군 탄약규정, 교육훈련지원규정에 따른다.</div>
-    <div class="jo">제27조 (훈련시설 및 예산) 예비군훈련 시설 관리 및 예산운영은 다음 각 호와 같다.</div>
+    <div class="jo" id="list26">제26조 (교육훈련 교보재 및 탄약)</div>
+    <div> 예비군훈련 교보재 및 탄약은 각 군 탄약규정, 교육훈련지원규정에 따른다.</div>
+    <div class="jo" id="list27">제27조 (훈련시설 및 예산)</div>
+    <div> 예비군훈련 시설 관리 및 예산운영은 다음 각 호와 같다.</div>
     <div class="ho"> 1. 훈련시설</div>
     <div> 가. 각 군 참모총장은 예비군훈련 시설의 소요제기, 사업집행, 관리･ 운영, 조정 및 통제를 한다.</div>
     <div> 나. 각 군 참모총장은 적정 훈련장 확보 및 사용의 활성화를 위하여 훈련장 표준규격 및 보유기준을 준수한다.</div>
@@ -538,7 +719,7 @@
     <div> 마. 비상근 예비군훈련 보상비는 1일 단위로 계산하여 지급한다. </div>
     <div> 1) 장기 비상근예비군은 주 단위 또는 월 단위로 지급할 수 있다. </div>
     <div> 2) 1일 훈련시간을 모두 이수하지 못한 자와 동 훈령 제16조 4항 ‘다’목에 따라 1일 훈련시간을 초과하여 이수한 자는 시간 단위로 계산하여 지급한다.</div>
-    <div class="jo">제28조(급식지원 기준) </div>
+    <div class="jo" id="list28">제28조(급식지원 기준) </div>
     <div class="hang">1항. 동원훈련 간에는 현역장병과 동일한 기준으로 부대급식(영내자 급식)을 실시한다. </div>
     <div class="hang"> 2항. 지역예비군훈련 간에는 다음 각호의 기준에 따라 도시락 급식을 실시한다. </div>
     <div class="ho"> 1. 도시락 급식을 위한 업체선정 간에는 급식의 질 향상을 위해 품질과 안정성을 우선적으로 고려하여 「국가를 당사자로 하는 계약에 관한 법률 시행령」제18조, 제43조에 따른 방법으로 계약을 체결할 수 있다.</div>
@@ -546,7 +727,8 @@
     <div class="ho"> 3. 업체 선정 간 품질과 맛, 위생을 검증하기 위해 업체 현장실사와 전역임박장병, 부대관계자, 가용시 예비군이 참가하는 품평회를 실시한다.</div>
     <div class="hang"> 3항. 제2항에도 불구하고 부대 및 예비군훈련장이 위치한 지역 내 품질과 안정성을 담보할 수 있는 도시락 납품업체의 수용(도시락 공급)능력의 부족과 예비군의 만족도 등을 고려하여 전투식량, 일반식당, 부대급식, 기타 급식방법을 각 군 승인하 실시할 수 있다.</div>
     <div class="hang"> 4항. 지역예비군 훈련부대는 훈련 간 급식 수준에 대한 예비군 만족도 조사를 실시하고 급식업체와 메뉴회의, 간담회 등을 통한 메뉴개선 노력 등을 하여야 한다.</div>
-    <div class="jo">제29조(보상·치료 및 안전 활동) 각 군 참모총장(해병대는 해병대사령관을 말한다. 이하 이 조에서 같다)과 병무청장은 동원 및 예비군훈련에 따른 보상·치료 및 안전을 위하여 다음 각 호와 같은 조치를 하여야 한다.</div>
+    <div class="jo" id="list29">제29조(보상·치료 및 안전 활동)</div>
+    <div> 각 군 참모총장(해병대는 해병대사령관을 말한다. 이하 이 조에서 같다)과 병무청장은 동원 및 예비군훈련에 따른 보상·치료 및 안전을 위하여 다음 각 호와 같은 조치를 하여야 한다.</div>
     <div class="ho"> 1. 예비군훈련 보상과 치료에 관한 세부적인 사항은 「예비군 휴업 보상과 치료 등에 관한 훈령」및「국방 환자관리 훈령」에 따른다. </div>
     <div class="ho"> 2. 각 군 참모총장은 예비군훈련 시 안전사고 예방에 대한 사전 세부대책 및 계획을 수립·시행하여 국민에게 대군 신뢰감을 증진시킬 수 있도록 한다.</div>
     <div> 가.수임군부대별 예비군훈련장의 시설물 안전진단과 훈련물자에 대한 연간 정비계획을 수립하고 주기적 점검활동을 통해 위생 및 안전 위해요소를 사전에 차단한다.</div>
@@ -560,7 +742,8 @@
     <div class="ho"> 4. 예비군훈련 간 흡연으로 피해를 예방하기 위해 예비군 훈련장 및 훈련시설 등에 대해 금연구역 및 흡연 장소를 지정․게시하여 운영하여야 한다.</div>
     <div class="ho"> 5. 해당 연도 기타 예비군훈련을 일부 이수한 자가 동원훈련으로 소집되어 입영훈련을 원할 경우 잔여시간 교육을 한다.</div>
     <div class="ho"> 6. 동원훈련 입영병력 차량수송 중 사고 발생 시, 해당 지방병무청과 사고지역 관할 수임군부대는 사고 조치에 필요한 사항을 상호 협조하여 지원한다.</div>
-    <div class="jo">제30조 (훈련기강 확립) 예비군훈련 간 기강확립은 다음 각 호에 따른다.</div>
+    <div class="jo" id="list30">제30조 (훈련기강 확립)</div>
+    <div> 예비군훈련 간 기강확립은 다음 각 호에 따른다.</div>
     <div class="ho"> 1. 입소 지연 도착자 처리</div>
     <div> 가. 동원훈련 및 동미참훈련(입영)시 1시간 이내의 지연도착자에 한하여 입소를 허용하되, 지연도착시간을 고려하여 보충훈련을 실시한다. 다만, 차량으로 단체수송 시 도로여건, 교통체증 등의 사유로 지연 시 소집부대와 지방병무청(병무지청)간 협의 하에 입영시간 조정이 가능하다. </div>
     <div> 나. 자원관리부대 예비군훈련장에 입소 훈련 시 지연 도착자는 무단불참으로 처리한다. 다만, 천재지변, 교통수단 고장 및 사고로 불가피한 상황으로 지연 도착한 경우, 오전 9시 30분까지 도착한 경우에 한하여 훈련부대장의판단 하에 입소가 가능하다. </div>
@@ -580,7 +763,8 @@
     <div> 나. 「국가공무원법」제33조 및「군인사법」제10조의 결격사유에 해당하거나 부여된 직무를 게을리한 경우(평가결과 저조 등)</div>
     <div> 다. 비상근예비군 소집 임무를 정상 수행할 수 없다고 인정되는 경우</div>
     <div> 라. 기타 각 군 참모총장 및 국방부 직할부대의 장이 정한 소집중단 사유에 해당하는 경우</div>
-    <div class="jo">제31조 (기타) 그 밖의 예비군훈련 지원사항은 다음 각 호에 따른다.</div>
+    <div class="jo" id="list31">제31조 (기타)</div>
+    <div> 그 밖의 예비군훈련 지원사항은 다음 각 호에 따른다.</div>
     <div class="ho"> 1. 동원훈련 입․퇴소 이동 간 통제</div>
     <div> 가. 지방병무청 및 수임군부대(소집부대)</div>
     <div> 1) 개별입영 또는 차량수송부대 판단 시 수임군부대(소집부대)와 협의하여 실시하고, 수임군부대(소집부대)는 차량 입영 시 퇴소 차량을 조치한다. </div>
@@ -608,38 +792,229 @@
     <div class="ho"> 6. 훈련장 명칭 </div>
     <div> 가. 지역예비군훈련장 : 시․군․구 명칭 부여하되 명칭 사용이 중복되거나, 도서지역 등 별도의 명칭 사용 필요 시 별도 명칭 사용이 가능하다. </div>
     <div> 나. 동원예비군훈련장, 과학화예비군훈련장 : 별도 고유명칭을 부여한다. </div>
-    <div class="jo">제32조(과태료) </div>
+    <div class="jo" id="list32">제32조(과태료) </div>
     <div class="hang">1항. 수임군부대장은 「예비군법」제6조의2 제4항을 위반한 자에게 같은 법 제15조의2에 따라 과태료를 부과할 경우에는 「질서위반행위규제법」제16조에 따라 당사자에게 별표 9 서식으로 통지하고 10일 이상의 기간을 정하여 의견을 제출할 기회를 주어야 한다. </div>
     <div class="hang"> 2항.제1항에 따른 의견 제출 절차를 마친 경우에는 수임군부대장은 「예비군법시행령」제39조와 별표에 따라 과태료를 산정하고「질서위반행위규제법」제17조에 따라 다음 각 호의 자료를 첨부하여 수입징수관에게 징수를 의뢰한다.</div>
     <div class="ho"> 1. 과태료 부과 결정서(별표 10 서식) </div>
     <div class="ho"> 2. 과태료 부과 관련 기타 필요서류</div>
     <div class="hang"> 3항.그 밖의 과태료의 부과·징수, 재판 및 집행 등의 절차 및 방법에 관한 사항은 「질서위반행위규제법」에서 정하는 바를 따른다.</div>
-    <div class="jo">제33조 (재검토 기간) 국방부 장관은 이 훈령에 대하여 2023년 1월 1일을 기준으로 매 3년이 되는 시점(매 3년째의 12월 31일까지를 말한다)마다 그 타당성을 검토하여 개선 등의 조치를 하여야 한다. </div>
+    <div class="jo" id="list33">제33조 (재검토 기간)</div>
+    <div> 국방부 장관은 이 훈령에 대하여 2023년 1월 1일을 기준으로 매 3년이 되는 시점(매 3년째의 12월 31일까지를 말한다)마다 그 타당성을 검토하여 개선 등의 조치를 하여야 한다. </div>
   </div>
-<script>
-  /*book*/
-const modebtn = document.querySelector('.mode-btn');
-const fontbtn = document.querySelector('.font-btn');
-const body = document.querySelector('body');
-modebtn.addEventListener('click',()=>{
-  console.log('mode-btn');
-  body.classList.toggle('dark-mode');
-  if(body.classList.contains('dark-mode')){
-    modebtn.style.color='orange';
-  }else{
-    modebtn.style.color='white';
-  }
-})
-fontbtn.addEventListener('click',()=>{
-  console.log('font');
-  body.classList.toggle('large-font');
-  if(body.classList.contains('large-font')){
-    fontbtn.style.color='orange';
-  }else{
-    fontbtn.style.color='white';
-  }
-});
-</script>
+  <script>
+    /*book*/
+    const modebtn = document.querySelector('.mode-btn');
+    const fontbtn = document.querySelector('.font-btn');
+    const body = document.querySelector('body');
+    modebtn.addEventListener('click', () => {
+      console.log('mode-btn');
+      body.classList.toggle('dark-mode');
+      if (body.classList.contains('dark-mode')) {
+        modebtn.style.color = 'orange';
+      } else {
+        modebtn.style.color = 'white';
+      }
+    })
+    fontbtn.addEventListener('click', () => {
+      console.log('font');
+      body.classList.toggle('large-font');
+      if (body.classList.contains('large-font')) {
+        fontbtn.style.color = 'orange';
+      } else {
+        fontbtn.style.color = 'white';
+      }
+    });
+
+    /* 2024.9.20 update */
+    const navMenu = document.querySelector(".nav-menu");
+    const navLinks = document.querySelectorAll('.nav-link');
+    navLinks.forEach(navLink => {
+      navLink.addEventListener("click", () => {
+        navMenu.classList.remove("show-menu");
+      })
+    })
+
+    /*============= swipe screen - show menu ===============*/
+
+    let touchArea = document.querySelector("body");
+
+    //Initial mouse X and Y positions are 0
+
+    let mouseX,
+      initialX = 0;
+    let mouseY,
+      initialY = 0;
+    let isSwiped;
+
+    //Events for touch and mouse
+    let events = {
+      mouse: {
+        down: "mousedown",
+        move: "mousemove",
+        up: "mouseup",
+      },
+      touch: {
+        down: "touchstart",
+        move: "touchmove",
+        up: "touchend",
+      },
+    };
+
+    let deviceType = "";
+
+    //Detect touch device
+
+    const isTouchDevice = () => {
+      try {
+        //We try to create TouchEvent (it would fail for desktops and throw error)
+        document.createEvent("TouchEvent");
+        deviceType = "touch";
+        return true;
+      } catch (e) {
+        deviceType = "mouse";
+        return false;
+      }
+    };
+
+    //Get left and top of touchArea
+    let rectLeft = touchArea.getBoundingClientRect().left;
+    let rectTop = touchArea.getBoundingClientRect().top;
+
+    //Get Exact X and Y position of mouse/touch
+    const getXY = (e) => {
+      mouseX = (!isTouchDevice() ? e.pageX : e.touches[0].pageX) - rectLeft;
+      mouseY = (!isTouchDevice() ? e.pageY : e.touches[0].pageY) - rectTop;
+    };
+
+    isTouchDevice();
+
+    //Start Swipe
+    touchArea.addEventListener(events[deviceType].down, (event) => {
+      isSwiped = true;
+      //Get X and Y Position
+      getXY(event);
+      initialX = mouseX;
+      initialY = mouseY;
+    });
+
+    //Mousemove / touchmove
+    touchArea.addEventListener(events[deviceType].move, (event) => {
+      if (!isTouchDevice()) {
+        event.preventDefault();
+      }
+      if (isSwiped) {
+        getXY(event);
+        let diffX = mouseX - initialX;
+        if (diffX > 100) {
+          navMenu.classList.remove('show-menu')
+        }
+        if (diffX < -100) {
+          navMenu.classList.add('show-menu')
+        }
+      }
+    });
+
+    //Stop Drawing
+    touchArea.addEventListener(events[deviceType].up, () => {
+      isSwiped = false;
+    });
+
+    touchArea.addEventListener("mouseleave", () => {
+      isSwiped = false;
+    });
+
+    window.onload = () => {
+      isSwiped = false;
+    };
+
+    /*============= swipe screen - show menu ===============*/
+  /*search 2024.09.21 update add start*/ 
+    const contentElement = document.getElementById('content');
+    const searchInput = document.querySelector('.search-input');
+    const searchResult = document.querySelector('.search-result');
+    const searchUp = document.querySelector('.search-up');
+    const searchDown = document.querySelector(".search-down");
+    let highlights;
+    let currentHighlightIndex = -1;
+    
+    function removeHighlights() {
+      const highlightedElements = contentElement.querySelectorAll('.highlight');
+      highlightedElements.forEach(element => {  element.replaceWith(document.createTextNode(element.textContent));
+      });
+      currentHighlightIndex = -1;
+    }
+
+    searchInput.addEventListener('input', () => {
+        removeHighlights(); // 기존 하이라이트 제거
+        let contentHtml = contentElement.innerHTML;
+        const searchValue = searchInput.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // 특수 문자 이스케이프
+        
+      
+        if (searchValue === '') {
+            contentElement.innerHTML = contentHtml; // 검색어가 빈 문자열일 경우 하이라이트 제거
+            searchResult.innerHTML='';
+            return;
+        }
+
+        const regex = new RegExp(`(${searchValue})`, 'gi');
+        
+        contentHtml = contentHtml.replace(regex, `<span class='highlight'>$1</span>`);
+        contentElement.innerHTML = contentHtml; 
+        highlights = contentElement.querySelectorAll('.highlight');
+        searchResult.innerHTML = `${highlights.length}건`;
+    });
+    
+    searchDown.addEventListener('click',()=>{
+      highlightNext();
+    })
+    
+    searchUp.addEventListener("click",()=>{
+      highlightPrev();
+    })
+    
+    
+    
+    function highlightNext() {
+      if (highlights.length === 0) {
+        currentHighlightIndex = -1;
+        return;
+      }
+
+      if (currentHighlightIndex >= 0) {
+          highlights[currentHighlightIndex].classList.remove('active');
+      }
+      currentHighlightIndex = (currentHighlightIndex + 1) % highlights.length;
+      searchResult.innerHTML=`${currentHighlightIndex+1}/${highlights.length}`;
+      highlights[currentHighlightIndex].classList.add('active');
+      highlights[currentHighlightIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+    
+    function highlightPrev() {
+      if (highlights.length === 0) {
+        currentHighlightIndex = -1;
+        return;
+      }
+
+      if (currentHighlightIndex >= 0) {
+          highlights[currentHighlightIndex].classList.remove('active');
+      }
+      currentHighlightIndex = currentHighlightIndex>0
+      ?(currentHighlightIndex - 1) % highlights.length : highlights.length-1;
+      searchResult.innerHTML=`${currentHighlightIndex + 1}/${highlights.length}`;
+      highlights[currentHighlightIndex].classList.add('active');
+      highlights[currentHighlightIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }
+
+    const searchBtn = document.querySelector('.search-btn');
+    searchBtn.addEventListener('click',()=>{
+      const search = document.querySelector(".search");
+      search.classList.toggle('show-search');
+    })
+    /*2024.9.21 update end*/
+  </script>
+
+
+
 
 </body>
 
