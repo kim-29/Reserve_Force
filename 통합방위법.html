@@ -24,10 +24,12 @@
       padding: 0;
       box-sizing: border-box;
     }
+
     /*2024. 9.20 add update start*/
-    html{
+    html {
       scroll-padding-top: 10rem;
     }
+
     /*2024. 9.20 add update end*/
     body {
       background-color: var(--dark);
@@ -39,7 +41,8 @@
     .title {
       font-size: var(--font3);
       text-align: center;
-      padding-top: 20rem;/*2024. 9.21 add update point*/
+      padding-top: 20rem;
+      /*2024. 9.21 add update point*/
     }
 
     div {
@@ -67,18 +70,19 @@
       margin-top: 5rem;
       font-weight: bold;
     }
+
     /*20224 09.21 수정 start*/
     .util {
       margin-top: 0;
       text-align: right;
-      font-size: 3rem;
+      font-size: 4rem;
       position: fixed;
       border-radius: 5rem;
       top: 0;
       right: 0;
       background-color: var(--dark);
     }
-    
+
     .search-btn,
     .mode-btn,
     .font-btn {
@@ -86,7 +90,8 @@
       padding: 3rem;
       display: inline-block;
     }
-    .search{
+
+    .search {
       font-size: 4rem;
       position: fixed;
       top: -10rem;
@@ -95,42 +100,49 @@
       transition: top .3s ease;
     }
 
-    .search-result, .search-up, .search-down{
+    .search-result,
+    .search-up,
+    .search-down {
       cursor: pointer;
       color: black;
       position: absolute;
       top: 1rem;
     }
 
-    .search-up{
+    .search-up {
+      right: 9rem;
+    }
+
+    .search-down {
       right: 3rem;
     }
-    .search-down{
-      right:9rem;
+
+    .search-result {
+      right: 15rem;
     }
-    .search-result{
-      right:15rem;
-    }
-    
-    .search-input{
+
+    .search-input {
       border-radius: 1rem;
       width: 100%;
       padding: 2rem;
       font-size: 3rem;
     }
-    .show-search{
+
+    .show-search {
       top: 10rem;
     }
-    
-    
+
+
     .highlight {
       background-color: green;
-      
+
     }
-    .highlight.active{
+
+    .highlight.active {
       background-color: red;
-      
+
     }
+
     /*20224 09.21 수정 end*/
 
     .dark-mode {
@@ -171,9 +183,11 @@
       margin: 0 4rem;
       text-align: left;
     }
-    .nav-list li{
+
+    .nav-list li {
       margin-top: 2rem;
     }
+
     .nav-link {
       color: white;
       text-decoration: none;
@@ -274,7 +288,7 @@
     <i class="ri-moon-line mode-btn"></i>
     <i class="ri-font-size-2 font-btn"></i>
   </div>
-  
+
   <!-- 2024.9.21 update end -->
   <div id="content">
     <h1 class="title">통합방위법 </h1>
@@ -836,7 +850,7 @@
     };
 
     /*============= swipe screen - show menu ===============*/
-  /*search 2024.09.21 update add start*/ 
+    /*search 2024.09.21 update add start*/
     const contentElement = document.getElementById('content');
     const searchInput = document.querySelector('.search-input');
     const searchResult = document.querySelector('.search-result');
@@ -844,44 +858,45 @@
     const searchDown = document.querySelector(".search-down");
     let highlights;
     let currentHighlightIndex = -1;
-    
+
     function removeHighlights() {
       const highlightedElements = contentElement.querySelectorAll('.highlight');
-      highlightedElements.forEach(element => {  element.replaceWith(document.createTextNode(element.textContent));
+      highlightedElements.forEach(element => {
+        element.replaceWith(document.createTextNode(element.textContent));
       });
       currentHighlightIndex = -1;
     }
 
     searchInput.addEventListener('input', () => {
-        removeHighlights(); // 기존 하이라이트 제거
-        let contentHtml = contentElement.innerHTML;
-        const searchValue = searchInput.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // 특수 문자 이스케이프
-        
-      
-        if (searchValue === '') {
-            contentElement.innerHTML = contentHtml; // 검색어가 빈 문자열일 경우 하이라이트 제거
-            searchResult.innerHTML='';
-            return;
-        }
+      removeHighlights(); // 기존 하이라이트 제거
+      let contentHtml = contentElement.innerHTML;
+      const searchValue = searchInput.value.replace(/[.*+?^${}()|[\]\\]/g, '\\$&'); // 특수 문자 이스케이프
 
-        const regex = new RegExp(`(${searchValue})`, 'gi');
-        
-        contentHtml = contentHtml.replace(regex, `<span class='highlight'>$1</span>`);
-        contentElement.innerHTML = contentHtml; 
-        highlights = contentElement.querySelectorAll('.highlight');
-        searchResult.innerHTML = `${highlights.length}건`;
+
+      if (searchValue === '') {
+        contentElement.innerHTML = contentHtml; // 검색어가 빈 문자열일 경우 하이라이트 제거
+        searchResult.innerHTML = '';
+        return;
+      }
+
+      const regex = new RegExp(`(${searchValue})`, 'gi');
+
+      contentHtml = contentHtml.replace(regex, `<span class='highlight'>$1</span>`);
+      contentElement.innerHTML = contentHtml;
+      highlights = contentElement.querySelectorAll('.highlight');
+      searchResult.innerHTML = `${highlights.length}건`;
     });
-    
-    searchDown.addEventListener('click',()=>{
+
+    searchDown.addEventListener('click', () => {
       highlightNext();
     })
-    
-    searchUp.addEventListener("click",()=>{
+
+    searchUp.addEventListener("click", () => {
       highlightPrev();
     })
-    
-    
-    
+
+
+
     function highlightNext() {
       if (highlights.length === 0) {
         currentHighlightIndex = -1;
@@ -889,14 +904,17 @@
       }
 
       if (currentHighlightIndex >= 0) {
-          highlights[currentHighlightIndex].classList.remove('active');
+        highlights[currentHighlightIndex].classList.remove('active');
       }
       currentHighlightIndex = (currentHighlightIndex + 1) % highlights.length;
-      searchResult.innerHTML=`${currentHighlightIndex+1}/${highlights.length}`;
+      searchResult.innerHTML = `${currentHighlightIndex+1}/${highlights.length}`;
       highlights[currentHighlightIndex].classList.add('active');
-      highlights[currentHighlightIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      highlights[currentHighlightIndex].scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
     }
-    
+
     function highlightPrev() {
       if (highlights.length === 0) {
         currentHighlightIndex = -1;
@@ -904,21 +922,25 @@
       }
 
       if (currentHighlightIndex >= 0) {
-          highlights[currentHighlightIndex].classList.remove('active');
+        highlights[currentHighlightIndex].classList.remove('active');
       }
-      currentHighlightIndex = currentHighlightIndex>0
-      ?(currentHighlightIndex - 1) % highlights.length : highlights.length-1;
-      searchResult.innerHTML=`${currentHighlightIndex + 1}/${highlights.length}`;
+      currentHighlightIndex = currentHighlightIndex > 0 ?
+        (currentHighlightIndex - 1) % highlights.length : highlights.length - 1;
+      searchResult.innerHTML = `${currentHighlightIndex + 1}/${highlights.length}`;
       highlights[currentHighlightIndex].classList.add('active');
-      highlights[currentHighlightIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+      highlights[currentHighlightIndex].scrollIntoView({
+        behavior: 'smooth',
+        block: 'center'
+      });
     }
 
     const searchBtn = document.querySelector('.search-btn');
-    searchBtn.addEventListener('click',()=>{
+    searchBtn.addEventListener('click', () => {
       const search = document.querySelector(".search");
       search.classList.toggle('show-search');
     })
     /*2024.9.21 update end*/
+
   </script>
 
 
